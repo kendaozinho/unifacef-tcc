@@ -1,0 +1,18 @@
+Alunos:
+    Caio Cesar Alves Borges
+    Kenneth Gottschalk de Azevedo
+
+A Importância de usar padrões de design em API's Rest
+
+* Diferença entre WebServices e APIs REST (Comparar os dois, falar que no WebService não é possível retornar status != 200 ou um formato de texto != xml etc)
+
+* Padrões das rotas (minúsculo, no plural / versionamento v1, v2, v3)
+
+* Verbos (GET, POST, PUT, PATCH, DELETE)
+
+* Status Code (200, 201, 204, 207, 400, 401, 403, 404, 409, 422, 500 etc)
+
+* Contratos (só inglês ou só português / camel case ou pascal case / os contratos de request e response devem se relacionar com a entidade da rota)
+
+* Falar sobre o meta + records? limit e offset? Não sei.
+
