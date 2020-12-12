@@ -4,6 +4,8 @@ Alunos:
 
 A Importância de usar padrões de design em API's Rest
 
+* Falar sobre o problema de não seguir um padrão na hora de desenvolver APIs (ao realizar integrações internas ou externas, não entender as documentações etc)
+
 * Diferença entre WebServices e APIs REST (Comparar os dois, falar que no WebService não é possível retornar status != 200 ou um formato de texto != xml etc)
 
 * Padrões das rotas (minúsculo, no plural / versionamento v1, v2, v3)
@@ -16,3 +18,4 @@ A Importância de usar padrões de design em API's Rest
 
 * Falar sobre o meta + records? limit e offset? Não sei.
 
+* Documentar a API (citar o swagger como exemplo)
