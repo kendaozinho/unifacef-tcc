@@ -10,3 +10,5 @@ spring:
     user: admin
     password: admin
     baseline-on-migrate: true
+jwt:
+  secret-key: 11111-22222-33333-44444-55555-66666-77777-88888
