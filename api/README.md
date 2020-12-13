@@ -1,5 +1,4 @@
-# Comics API
-API de histórias em quadrinhos.
+# unifacef-tcc
 
 ## Requisitos
 * Java 8

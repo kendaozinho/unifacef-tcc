@@ -1,7 +1,7 @@
-CREATE TABLE comics
+CREATE TABLE developer
 (
    id           int(12)        NOT NULL   PRIMARY KEY   AUTO_INCREMENT,
-   title        varchar(255)   NOT NULL,
+   name         varchar(255)   NOT NULL,
    created_at   datetime       NOT NULL,
    updated_at   datetime       DEFAULT NULL
 );

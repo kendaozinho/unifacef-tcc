@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.unifacef</groupId>
-	<artifactId>comics</artifactId>
+	<artifactId>tcc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>comics</name>
+	<name>tcc</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

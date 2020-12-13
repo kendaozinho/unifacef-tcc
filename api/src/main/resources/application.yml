@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:tcc
+    username: admin
+    password: admin
+    driver-class-name: org.h2.Driver
+  flyway:
+    enabled: true
+    url: jdbc:h2:mem:tcc
+    user: admin
+    password: admin
+    baseline-on-migrate: true

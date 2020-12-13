@@ -1,13 +1,11 @@
-package com.unifacef.comics;
+package com.unifacef.tcc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ComicsApplication {
-
+public class StartApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(ComicsApplication.class, args);
+		SpringApplication.run(StartApplication.class, args);
 	}
-
 }
