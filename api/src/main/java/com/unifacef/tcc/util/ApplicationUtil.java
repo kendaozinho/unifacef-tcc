@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Map;
 
 @Component
@@ -21,12 +21,8 @@ public class ApplicationUtil {
       Map<String, Object> beans =
           ApplicationUtil.staticApplicationContext.getBeansWithAnnotation(SpringBootApplication.class);
 
-      String version = (beans == null || beans.isEmpty()) ?
-          null : Arrays.asList(beans.values()).get(0).getClass().getPackage().getImplementationVersion();
-
-      if (version == null) {
-        return ApplicationUtil.class.getPackage().getImplementationVersion();
-      }
+      return (beans == null || beans.isEmpty()) ?
+          null : Collections.singletonList(beans.values()).get(0).getClass().getPackage().getImplementationVersion();
     } catch (Throwable t) {
       System.err.println("Unable to get application version: " + t.toString());
     }

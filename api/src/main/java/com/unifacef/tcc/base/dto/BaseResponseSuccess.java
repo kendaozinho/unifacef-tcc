@@ -4,51 +4,44 @@ import com.unifacef.tcc.exception.NotFoundException;
 import com.unifacef.tcc.util.ApplicationUtil;
 import com.unifacef.tcc.util.ServerUtil;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 
 public final class BaseResponseSuccess<T> {
   private Meta meta;
-  private List<T> records;
+  private ArrayList<T> records;
 
   private BaseResponseSuccess() {
   }
 
-  public static <T> BaseResponseSuccess<T> instanceOf(T object,
-                                                      Integer offset,
-                                                      Integer limit) {
+  public static <T> BaseResponseSuccess<T> instanceOf(T object) {
+    return BaseResponseSuccess.getInstance(object, 0, 100);
+  }
+
+  public static <T> BaseResponseSuccess<T> instanceOf(Iterable<T> object) {
+    return BaseResponseSuccess.getInstance(object, 0, 100);
+  }
+
+  public static <T> BaseResponseSuccess<T> instanceOf(Iterable<T> object, Integer offset, Integer limit) {
     return BaseResponseSuccess.getInstance(object, offset, limit);
   }
 
   private static BaseResponseSuccess getInstance(Object object, Integer offset, Integer limit) {
-    if (object == null) {
-      return null;
-    }
-
-    // default values
-    if (offset == null || offset < 0) {
-      offset = 0; // index where the search begins
-    }
-    if (limit == null || limit <= 0) {
-      limit = 10; // number of records per page
-    }
-
-    Iterable<Object> objects = (object instanceof Iterable<?> ? (Iterable<Object>) object
-        : (Iterable<Object>) Arrays.asList(object));
+    Iterable<Object> objects =
+        (object instanceof Iterable<?> ? (Iterable<Object>) object : Collections.singletonList(object));
 
     Iterator<Object> oldList = objects.iterator();
-    List<Object> newList = new java.util.ArrayList<>(Collections.emptyList());
+    ArrayList<Object> newList = new java.util.ArrayList<>();
 
-    int i = 0;
+    int count = 0;
     while (oldList.hasNext()) {
-      if (i >= (offset * limit) && i < ((offset * limit) + limit)) {
+      if (count >= (offset * limit) && count < ((offset * limit) + limit)) {
         newList.add(oldList.next());
       } else {
         oldList.next();
       }
-      i++;
+      count++;
     }
 
     if (newList.isEmpty()) {
@@ -56,8 +49,8 @@ public final class BaseResponseSuccess<T> {
     }
 
     BaseResponseSuccess response = new BaseResponseSuccess();
+    response.setMeta(ServerUtil.getHostName(), ApplicationUtil.getVersion(), offset, limit, newList.size());
     response.setRecords(newList);
-    response.setMeta(ServerUtil.getHostName(), ApplicationUtil.getVersion(), limit, offset, newList.size());
     return response;
   }
 
@@ -65,42 +58,42 @@ public final class BaseResponseSuccess<T> {
     return this.meta;
   }
 
-  private void setMeta(String version, String server, Integer offset, Integer limit, Integer recordCount) {
-    this.meta = new Meta(version, server, offset, limit, recordCount);
+  private void setMeta(String server, String version, Integer offset, Integer limit, Integer recordCount) {
+    this.meta = new Meta(server, version, offset, limit, recordCount);
   }
 
-  public List<T> getRecords() {
+  public ArrayList<T> getRecords() {
     if (this.records == null) {
-      this.records = Collections.emptyList();
+      this.records = new ArrayList();
     }
     return this.records;
   }
 
-  private void setRecords(List<T> records) {
+  private void setRecords(ArrayList<T> records) {
     this.records = records;
   }
 
   private class Meta {
-    private String version;
     private String server;
+    private String version;
     private Integer offset;
     private Integer limit;
     private Integer recordCount;
 
-    public Meta(String version, String server, Integer offset, Integer limit, Integer recordCount) {
-      this.version = version;
+    public Meta(String server, String version, Integer offset, Integer limit, Integer recordCount) {
       this.server = server;
+      this.version = version;
       this.offset = offset;
       this.limit = limit;
       this.recordCount = recordCount;
     }
 
-    public String getVersion() {
-      return this.version;
-    }
-
     public String getServer() {
       return this.server;
+    }
+
+    public String getVersion() {
+      return this.version;
     }
 
     public Integer getOffset() {

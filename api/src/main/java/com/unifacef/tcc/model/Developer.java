@@ -27,6 +27,14 @@ public class Developer implements Serializable {
   @LastModifiedDate
   private LocalDateTime updatedAt;
 
+  public Developer() {
+  }
+
+  public Developer(Integer id, String name) {
+    this.id = id;
+    this.name = name;
+  }
+
   @PreUpdate
   private void setUpdatedAt() {
     this.updatedAt = LocalDateTime.now();

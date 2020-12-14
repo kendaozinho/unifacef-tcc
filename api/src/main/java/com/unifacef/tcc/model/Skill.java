@@ -27,6 +27,14 @@ public class Skill implements Serializable {
   @LastModifiedDate
   private LocalDateTime updatedAt;
 
+  public Skill() {
+  }
+
+  public Skill(Integer id, String name) {
+    this.id = id;
+    this.name = name;
+  }
+
   @PreUpdate
   private void setUpdatedAt() {
     this.updatedAt = LocalDateTime.now();

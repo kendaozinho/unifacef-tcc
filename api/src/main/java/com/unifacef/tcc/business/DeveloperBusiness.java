@@ -1,4 +1,74 @@
 package com.unifacef.tcc.business;
 
+import com.unifacef.tcc.controller.v1.dto.DeveloperDto;
+import com.unifacef.tcc.exception.NotFoundException;
+import com.unifacef.tcc.model.Developer;
+import com.unifacef.tcc.repository.DeveloperRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+@Service
 public class DeveloperBusiness {
+  @Autowired
+  private DeveloperRepository repository;
+
+  public ArrayList<DeveloperDto> getAll(Integer id, String name) {
+    ArrayList<Developer> developers = new ArrayList<>();
+
+    if (id != null) {
+      this.repository.findById(id).ifPresent(developers::add);
+    } else if (name != null && !name.trim().isEmpty()) {
+      developers.addAll(this.repository.findByName(name));
+    } else {
+      developers.addAll(this.repository.findAll());
+    }
+
+    if (developers.isEmpty()) {
+      throw new NotFoundException("Developer not found");
+    }
+
+    return developers.stream().map(Developer::toDto).collect(Collectors.toCollection(ArrayList::new));
+  }
+
+  public DeveloperDto getById(Integer id) {
+    Optional<Developer> developer = this.repository.findById(id);
+
+    if (developer.isPresent()) {
+      return developer.get().toDto();
+    } else {
+      throw new NotFoundException("Developer not found");
+    }
+  }
+
+  public DeveloperDto post(DeveloperDto request) {
+    request.setId(null);
+
+    return this.repository.saveAndFlush(request.toModel()).toDto();
+  }
+
+  public DeveloperDto put(Integer id, DeveloperDto request) {
+    request.setId(id);
+
+    Optional<Developer> developer = this.repository.findById(id);
+
+    if (developer.isPresent()) {
+      return this.repository.saveAndFlush(request.toModel()).toDto();
+    } else {
+      throw new NotFoundException("Developer not found");
+    }
+  }
+
+  public void delete(Integer id) {
+    Optional<Developer> developer = this.repository.findById(id);
+
+    if (developer.isPresent()) {
+      this.repository.delete(developer.get());
+    } else {
+      throw new NotFoundException("Developer not found");
+    }
+  }
 }

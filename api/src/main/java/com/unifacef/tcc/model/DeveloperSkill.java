@@ -27,6 +27,9 @@ public class DeveloperSkill implements Serializable {
   @LastModifiedDate
   private LocalDateTime updatedAt;
 
+  public DeveloperSkill() {
+  }
+
   @PreUpdate
   private void setUpdatedAt() {
     this.updatedAt = LocalDateTime.now();
@@ -36,6 +39,7 @@ public class DeveloperSkill implements Serializable {
     private Integer developerId;
     private Integer skillId;
 
-    public DeveloperSkillId() {}
+    public DeveloperSkillId() {
+    }
   }
 }
