@@ -30,7 +30,11 @@ public class DeveloperSkillBusiness {
     List<DeveloperSkill> developersAndSkills = new ArrayList<>();
 
     if (developerId != null && skillId != null) {
-      developersAndSkills.add(this.repository.findOneByDeveloperIdAndSkillId(developerId, skillId));
+      DeveloperSkill developerSkill = this.repository.findOneByDeveloperIdAndSkillId(developerId, skillId);
+
+      if (developerSkill != null) {
+        developersAndSkills.add(developerSkill);
+      }
     } else if (developerId != null) {
       developersAndSkills.addAll(this.repository.findAllByDeveloperId(developerId));
     } else if (skillId != null) {

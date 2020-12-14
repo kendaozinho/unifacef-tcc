@@ -37,7 +37,7 @@ public final class BaseResponseSuccess<T> {
     }
 
     if (limit == null || limit < 0) {
-      limit = 0;
+      limit = 100;
     }
 
     Iterable<Object> objects =
