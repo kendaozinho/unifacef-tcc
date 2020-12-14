@@ -1,4 +1,4 @@
-package com.unifacef.tcc.advice.dto;
+package com.unifacef.tcc.base.dto;
 
 public class BaseResponseError {
   private String userMessage;

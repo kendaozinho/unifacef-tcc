@@ -16,6 +16,8 @@ A Importância de usar padrões de design em API's Rest
 
 * Contratos (só inglês ou só português / camel case ou pascal case / os contratos de request e response devem se relacionar com a entidade da rota)
 
+* Citar a importância do health check? Não sei se tem a ver.
+
 * Falar sobre o meta + records? limit e offset? Não sei.
 
 * Documentar a API (citar o swagger como exemplo)

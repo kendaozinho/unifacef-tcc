@@ -1,6 +1,6 @@
 package com.unifacef.tcc.advice;
 
-import com.unifacef.tcc.advice.dto.BaseResponseError;
+import com.unifacef.tcc.base.dto.BaseResponseError;
 import com.unifacef.tcc.exception.BadRequestException;
 import com.unifacef.tcc.exception.ConflictException;
 import com.unifacef.tcc.exception.InternalServerErrorException;

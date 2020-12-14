@@ -1,13 +1,13 @@
-package com.unifacef.tcc.controller.v1.developer.dto;
+package com.unifacef.tcc.controller.v1.dto;
 
-public class DeveloperDto {
+public class SkillDto {
   private Integer id;
   private String name;
 
-  public DeveloperDto() {
+  public SkillDto() {
   }
 
-  public DeveloperDto(Integer id, String name) {
+  public SkillDto(Integer id, String name) {
     this.id = id;
     this.name = name;
   }

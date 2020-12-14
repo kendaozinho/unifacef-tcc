@@ -1,7 +1,7 @@
-package com.unifacef.tcc.controller.v1.developer;
+package com.unifacef.tcc.controller.v1;
 
-import com.unifacef.tcc.controller.dto.BaseResponseSuccess;
-import com.unifacef.tcc.controller.v1.developer.dto.DeveloperDto;
+import com.unifacef.tcc.base.dto.BaseResponseSuccess;
+import com.unifacef.tcc.controller.v1.dto.DeveloperDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

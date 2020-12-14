@@ -1,4 +1,4 @@
-package com.unifacef.tcc.controller.dto;
+package com.unifacef.tcc.base.dto;
 
 import com.unifacef.tcc.exception.NotFoundException;
 import com.unifacef.tcc.util.ApplicationUtil;
