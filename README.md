@@ -19,5 +19,12 @@ mvn spring-boot:run
 http://localhost:8080/swagger-ui/
 ```
 
-## Realizar o deploy
-TO DO!
+## Realizar o deploy no DockerHub
+```sh
+mvn clean package
+
+docker login --username=kennethgaz
+
+docker build -t kennethgaz/unifacef-tcc:0.0.1 .
+docker push kennethgaz/unifacef-tcc:0.0.1
+```
