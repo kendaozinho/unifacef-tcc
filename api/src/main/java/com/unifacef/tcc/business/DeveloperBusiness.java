@@ -37,11 +37,11 @@ public class DeveloperBusiness {
   public DeveloperDto getById(Integer id) {
     Optional<Developer> developer = this.repository.findById(id);
 
-    if (developer.isPresent()) {
-      return developer.get().toDto();
-    } else {
+    if (!developer.isPresent()) {
       throw new NotFoundException("Developer not found");
     }
+
+    return developer.get().toDto();
   }
 
   public DeveloperDto post(DeveloperDto request) {
@@ -55,20 +55,20 @@ public class DeveloperBusiness {
 
     Optional<Developer> developer = this.repository.findById(id);
 
-    if (developer.isPresent()) {
-      return this.repository.saveAndFlush(request.toModel()).toDto();
-    } else {
+    if (!developer.isPresent()) {
       throw new NotFoundException("Developer not found");
     }
+
+    return this.repository.saveAndFlush(request.toModel()).toDto();
   }
 
   public void delete(Integer id) {
     Optional<Developer> developer = this.repository.findById(id);
 
-    if (developer.isPresent()) {
-      this.repository.delete(developer.get());
-    } else {
+    if (!developer.isPresent()) {
       throw new NotFoundException("Developer not found");
     }
+
+    this.repository.delete(developer.get());
   }
 }
