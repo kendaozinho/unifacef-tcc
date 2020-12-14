@@ -4,6 +4,7 @@ import com.unifacef.tcc.controller.v1.dto.DeveloperDto;
 import com.unifacef.tcc.exception.NotFoundException;
 import com.unifacef.tcc.model.Developer;
 import com.unifacef.tcc.repository.DeveloperRepository;
+import com.unifacef.tcc.repository.DeveloperSkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,8 @@ import java.util.stream.Collectors;
 public class DeveloperBusiness {
   @Autowired
   private DeveloperRepository repository;
+  @Autowired
+  private DeveloperSkillRepository developerSkillRepository;
 
   public ArrayList<DeveloperDto> getAll(Integer id, String name) {
     ArrayList<Developer> developers = new ArrayList<>();
@@ -68,6 +71,10 @@ public class DeveloperBusiness {
     if (!developer.isPresent()) {
       throw new NotFoundException("Developer not found");
     }
+
+    this.developerSkillRepository.findAllByDeveloperId(id).forEach(
+        developerSkill -> this.developerSkillRepository.delete(developerSkill)
+    );
 
     this.repository.delete(developer.get());
   }

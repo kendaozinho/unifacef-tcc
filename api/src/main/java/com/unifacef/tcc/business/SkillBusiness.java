@@ -4,6 +4,7 @@ import com.unifacef.tcc.controller.v1.dto.SkillDto;
 import com.unifacef.tcc.exception.ConflictException;
 import com.unifacef.tcc.exception.NotFoundException;
 import com.unifacef.tcc.model.Skill;
+import com.unifacef.tcc.repository.DeveloperSkillRepository;
 import com.unifacef.tcc.repository.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,8 @@ import java.util.stream.Collectors;
 public class SkillBusiness {
   @Autowired
   private SkillRepository repository;
+  @Autowired
+  private DeveloperSkillRepository developerSkillRepository;
 
   public ArrayList<SkillDto> getAll(Integer id, String name) {
     ArrayList<Skill> skills = new ArrayList<>();
@@ -81,6 +84,10 @@ public class SkillBusiness {
     if (!skill.isPresent()) {
       throw new NotFoundException("Skill not found");
     }
+
+    this.developerSkillRepository.findAllBySkillId(id).forEach(
+        developerSkill -> this.developerSkillRepository.delete(developerSkill)
+    );
 
     this.repository.delete(skill.get());
   }
