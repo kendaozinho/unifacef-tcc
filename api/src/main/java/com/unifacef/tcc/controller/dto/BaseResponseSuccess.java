@@ -13,25 +13,7 @@ public final class BaseResponseSuccess<T> {
   private Meta meta;
   private List<T> records;
 
-  private BaseResponseSuccess() {}
-
-  public Meta getMeta() {
-    return this.meta;
-  }
-
-  private void setMeta(String version, String server, Integer offset, Integer limit, Integer recordCount) {
-    this.meta = new Meta(version, server, offset, limit, recordCount);
-  }
-
-  public List<T> getRecords() {
-    if (this.records == null) {
-      this.records = Collections.emptyList();
-    }
-    return this.records;
-  }
-
-  private void setRecords(List<T> records) {
-    this.records = records;
+  private BaseResponseSuccess() {
   }
 
   public static <T> BaseResponseSuccess<T> instanceOf(T object,
@@ -77,6 +59,25 @@ public final class BaseResponseSuccess<T> {
     response.setRecords(newList);
     response.setMeta(ServerUtil.getHostName(), ApplicationUtil.getVersion(), limit, offset, newList.size());
     return response;
+  }
+
+  public Meta getMeta() {
+    return this.meta;
+  }
+
+  private void setMeta(String version, String server, Integer offset, Integer limit, Integer recordCount) {
+    this.meta = new Meta(version, server, offset, limit, recordCount);
+  }
+
+  public List<T> getRecords() {
+    if (this.records == null) {
+      this.records = Collections.emptyList();
+    }
+    return this.records;
+  }
+
+  private void setRecords(List<T> records) {
+    this.records = records;
   }
 
   private class Meta {

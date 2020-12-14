@@ -16,11 +16,6 @@ public class ApplicationUtil {
   @Autowired
   private ApplicationContext applicationContext;
 
-  @PostConstruct
-  public void init() {
-    ApplicationUtil.staticApplicationContext = this.applicationContext;
-  }
-
   public static String getVersion() {
     try {
       Map<String, Object> beans =
@@ -37,5 +32,10 @@ public class ApplicationUtil {
     }
 
     return null;
+  }
+
+  @PostConstruct
+  public void init() {
+    ApplicationUtil.staticApplicationContext = this.applicationContext;
   }
 }

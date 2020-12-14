@@ -1,4 +1,4 @@
-package com.unifacef.tcc.configuration;
+package com.unifacef.tcc.configuration.swagger;
 
 import com.unifacef.tcc.util.ApplicationUtil;
 import com.unifacef.tcc.util.JwtUtil;

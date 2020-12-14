@@ -20,7 +20,7 @@ public class JwtUtil {
             .compact();
   }
 
-  private Boolean isValidJwt(String jwtSecretKey, String authorization) {
+  public static Boolean isValidJwt(String jwtSecretKey, String authorization) {
     try {
       Jwts.parser()
           .setSigningKey(jwtSecretKey.getBytes())

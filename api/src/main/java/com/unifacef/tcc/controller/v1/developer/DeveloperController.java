@@ -11,12 +11,12 @@ public class DeveloperController {
   @GetMapping
   @ResponseStatus(HttpStatus.OK)
   public BaseResponseSuccess<DeveloperDto> getAll() {
-    return BaseResponseSuccess.instanceOf(new DeveloperDto(1, "kendao"), 10,  10);
+    return BaseResponseSuccess.instanceOf(new DeveloperDto(1, "kendao"), 10, 10);
   }
 
   @GetMapping("/{id}")
   @ResponseStatus(HttpStatus.OK)
   public BaseResponseSuccess<DeveloperDto> getById(@PathVariable Integer id) {
-    return BaseResponseSuccess.instanceOf(new DeveloperDto(id, "kendao"), 10,  10);
+    return BaseResponseSuccess.instanceOf(new DeveloperDto(id, "kendao"), 10, 10);
   }
 }
