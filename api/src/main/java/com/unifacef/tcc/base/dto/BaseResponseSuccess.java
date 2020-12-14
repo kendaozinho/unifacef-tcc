@@ -28,6 +28,18 @@ public final class BaseResponseSuccess<T> {
   }
 
   private static BaseResponseSuccess getInstance(Object object, Integer offset, Integer limit) {
+    if (object == null) {
+      throw new NotFoundException("Data not found");
+    }
+
+    if (offset == null || offset < 0) {
+      offset = 0;
+    }
+
+    if (limit == null || limit < 0) {
+      limit = 0;
+    }
+
     Iterable<Object> objects =
         (object instanceof Iterable<?> ? (Iterable<Object>) object : Collections.singletonList(object));
 

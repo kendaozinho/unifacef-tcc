@@ -22,7 +22,7 @@ public class DeveloperBusiness {
     if (id != null) {
       this.repository.findById(id).ifPresent(developers::add);
     } else if (name != null && !name.trim().isEmpty()) {
-      developers.addAll(this.repository.findByName(name));
+      developers.addAll(this.repository.findAllByName(name));
     } else {
       developers.addAll(this.repository.findAll());
     }

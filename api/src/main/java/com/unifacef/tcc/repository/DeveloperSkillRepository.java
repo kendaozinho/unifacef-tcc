@@ -8,5 +8,9 @@ import java.util.ArrayList;
 
 @Repository
 public interface DeveloperSkillRepository extends JpaRepository<DeveloperSkill, DeveloperSkill.DeveloperSkillId> {
-  ArrayList<DeveloperSkill> findByDeveloperId(Integer developerId);
+  DeveloperSkill findOneByDeveloperIdAndSkillId(Integer developerId, Integer skillId);
+
+  ArrayList<DeveloperSkill> findAllByDeveloperId(Integer developerId);
+
+  ArrayList<DeveloperSkill> findAllBySkillId(Integer skillId);
 }

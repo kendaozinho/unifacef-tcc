@@ -8,5 +8,5 @@ import java.util.ArrayList;
 
 @Repository
 public interface DeveloperRepository extends JpaRepository<Developer, Integer> {
-  ArrayList<Developer> findByName(String name);
+  ArrayList<Developer> findAllByName(String name);
 }

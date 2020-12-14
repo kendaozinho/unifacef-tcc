@@ -30,12 +30,25 @@ public class DeveloperSkill implements Serializable {
   public DeveloperSkill() {
   }
 
+  public DeveloperSkill(Integer developerId, Integer skillId) {
+    this.developerId = developerId;
+    this.skillId = skillId;
+  }
+
+  public Integer getDeveloperId() {
+    return developerId;
+  }
+
+  public Integer getSkillId() {
+    return skillId;
+  }
+
   @PreUpdate
   private void setUpdatedAt() {
     this.updatedAt = LocalDateTime.now();
   }
 
-  public class DeveloperSkillId implements Serializable {
+  public static class DeveloperSkillId implements Serializable {
     private Integer developerId;
     private Integer skillId;
 
