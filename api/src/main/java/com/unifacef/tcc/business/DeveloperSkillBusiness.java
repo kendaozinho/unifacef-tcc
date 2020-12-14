@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -51,17 +50,17 @@ public class DeveloperSkillBusiness {
   }
 
   public DeveloperSkillDto post(DeveloperSkillDto request) {
-    Optional<Developer> developer =
-        this.developerRepository.findById(request.getDeveloper() == null ? 0 : request.getDeveloper().getId());
+    Developer developer =
+        this.developerRepository.findOneById(request.getDeveloper() == null ? 0 : request.getDeveloper().getId());
 
-    if (!developer.isPresent()) {
+    if (developer == null) {
       throw new NotFoundException("Developer not found");
     }
 
-    Optional<Skill> skill =
-        this.skillRepository.findById(request.getSkill() == null ? 0 : request.getSkill().getId());
+    Skill skill =
+        this.skillRepository.findOneById(request.getSkill() == null ? 0 : request.getSkill().getId());
 
-    if (!skill.isPresent()) {
+    if (skill == null) {
       throw new NotFoundException("Skill not found");
     }
 
@@ -89,8 +88,8 @@ public class DeveloperSkillBusiness {
 
   public DeveloperSkillDto parseModelToDto(DeveloperSkill developerSkill) {
     return new DeveloperSkillDto(
-        this.developerRepository.findById(developerSkill.getDeveloperId()).get().toDto(),
-        this.skillRepository.findById(developerSkill.getSkillId()).get().toDto()
+        this.developerRepository.findOneById(developerSkill.getDeveloperId()).toDto(),
+        this.skillRepository.findOneById(developerSkill.getSkillId()).toDto()
     );
   }
 }

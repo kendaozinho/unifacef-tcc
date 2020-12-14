@@ -6,5 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SkillRepository extends JpaRepository<Skill, Integer> {
+  Skill findOneById(Integer id);
+
   Skill findOneByName(String name);
 }

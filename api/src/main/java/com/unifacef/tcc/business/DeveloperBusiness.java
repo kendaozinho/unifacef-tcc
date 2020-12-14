@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,7 +22,11 @@ public class DeveloperBusiness {
     ArrayList<Developer> developers = new ArrayList<>();
 
     if (id != null) {
-      this.repository.findById(id).ifPresent(developers::add);
+      Developer developer = this.repository.findOneById(id);
+
+      if (developer != null) {
+        developers.add(developer);
+      }
     } else if (name != null && !name.trim().isEmpty()) {
       developers.addAll(this.repository.findAllByName(name));
     } else {
@@ -38,13 +41,13 @@ public class DeveloperBusiness {
   }
 
   public DeveloperDto getById(Integer id) {
-    Optional<Developer> developer = this.repository.findById(id);
+    Developer developer = this.repository.findOneById(id);
 
-    if (!developer.isPresent()) {
+    if (developer == null) {
       throw new NotFoundException("Developer not found");
     }
 
-    return developer.get().toDto();
+    return developer.toDto();
   }
 
   public DeveloperDto post(DeveloperDto request) {
@@ -56,19 +59,23 @@ public class DeveloperBusiness {
   public DeveloperDto put(Integer id, DeveloperDto request) {
     request.setId(id);
 
-    Optional<Developer> developer = this.repository.findById(id);
+    Developer developer = this.repository.findOneById(id);
 
-    if (!developer.isPresent()) {
+    if (developer == null) {
       throw new NotFoundException("Developer not found");
     }
 
-    return this.repository.saveAndFlush(request.toModel()).toDto();
+    developer.setName(request.getName());
+
+    this.repository.saveAndFlush(developer);
+
+    return developer.toDto();
   }
 
   public void delete(Integer id) {
-    Optional<Developer> developer = this.repository.findById(id);
+    Developer developer = this.repository.findOneById(id);
 
-    if (!developer.isPresent()) {
+    if (developer == null) {
       throw new NotFoundException("Developer not found");
     }
 
@@ -76,6 +83,6 @@ public class DeveloperBusiness {
         developerSkill -> this.developerSkillRepository.delete(developerSkill)
     );
 
-    this.repository.delete(developer.get());
+    this.repository.delete(developer);
   }
 }

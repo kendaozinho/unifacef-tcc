@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,7 +23,11 @@ public class SkillBusiness {
     ArrayList<Skill> skills = new ArrayList<>();
 
     if (id != null) {
-      this.repository.findById(id).ifPresent(skills::add);
+      Skill skill = this.repository.findOneById(id);
+
+      if (skill != null) {
+        skills.add(skill);
+      }
     } else if (name != null && !name.trim().isEmpty()) {
       skills.add(this.repository.findOneByName(name));
     } else {
@@ -39,13 +42,13 @@ public class SkillBusiness {
   }
 
   public SkillDto getById(Integer id) {
-    Optional<Skill> skill = this.repository.findById(id);
+    Skill skill = this.repository.findOneById(id);
 
-    if (!skill.isPresent()) {
+    if (skill == null) {
       throw new NotFoundException("Skill not found");
     }
 
-    return skill.get().toDto();
+    return skill.toDto();
   }
 
   public SkillDto post(SkillDto request) {
@@ -63,9 +66,9 @@ public class SkillBusiness {
   public SkillDto put(Integer id, SkillDto request) {
     request.setId(id);
 
-    Optional<Skill> skill = this.repository.findById(id);
+    Skill skill = this.repository.findOneById(id);
 
-    if (!skill.isPresent()) {
+    if (skill == null) {
       throw new NotFoundException("Skill not found");
     }
 
@@ -75,13 +78,17 @@ public class SkillBusiness {
       throw new ConflictException("Skill already exists");
     }
 
-    return this.repository.saveAndFlush(request.toModel()).toDto();
+    skill.setName(request.getName());
+
+    this.repository.saveAndFlush(skill);
+
+    return skill.toDto();
   }
 
   public void delete(Integer id) {
-    Optional<Skill> skill = this.repository.findById(id);
+    Skill skill = this.repository.findOneById(id);
 
-    if (!skill.isPresent()) {
+    if (skill == null) {
       throw new NotFoundException("Skill not found");
     }
 
@@ -89,6 +96,6 @@ public class SkillBusiness {
         developerSkill -> this.developerSkillRepository.delete(developerSkill)
     );
 
-    this.repository.delete(skill.get());
+    this.repository.delete(skill);
   }
 }

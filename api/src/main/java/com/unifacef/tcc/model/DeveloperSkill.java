@@ -1,8 +1,5 @@
 package com.unifacef.tcc.model;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -20,11 +17,9 @@ public class DeveloperSkill implements Serializable {
   private Integer skillId;
 
   @Column(name = "created_at", nullable = false, updatable = false)
-  @CreatedDate
-  private LocalDateTime createdAt = LocalDateTime.now();
+  private LocalDateTime createdAt;
 
   @Column(name = "updated_at")
-  @LastModifiedDate
   private LocalDateTime updatedAt;
 
   public DeveloperSkill() {
@@ -41,6 +36,11 @@ public class DeveloperSkill implements Serializable {
 
   public Integer getSkillId() {
     return skillId;
+  }
+
+  @PrePersist
+  private void setCreatedAt() {
+    this.createdAt = LocalDateTime.now();
   }
 
   @PreUpdate
