@@ -5,6 +5,7 @@ import com.unifacef.tcc.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -21,12 +22,13 @@ import java.util.Collections;
 import java.util.HashSet;
 
 @Configuration
+@Profile("default")
 public class SwaggerConfiguration {
   @Value("${jwt.secret-key}")
   private String jwtSecretKey;
 
   @Bean
-  public Docket getDocket() {
+  public Docket docket() {
     return new Docket(DocumentationType.SWAGGER_2)
         .pathMapping("/")
         .apiInfo(this.getApiInfo())
