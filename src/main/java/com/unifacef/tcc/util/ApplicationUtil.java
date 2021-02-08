@@ -2,7 +2,10 @@ package com.unifacef.tcc.util;
 
 import com.unifacef.tcc.StartApplication;
 
-public class ApplicationUtil {
+public final class ApplicationUtil {
+  private ApplicationUtil() {
+  }
+
   public static String getVersion() {
     try {
       return StartApplication.class.getPackage().getImplementationVersion();

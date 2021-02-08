@@ -102,7 +102,6 @@
                 <configuration>
                     <excludes>
                         <exclude>com/unifacef/tcc/StartApplication.**</exclude>
-                        <exclude>com/unifacef/tcc/configuration/**</exclude>
                     </excludes>
                 </configuration>
                 <executions>

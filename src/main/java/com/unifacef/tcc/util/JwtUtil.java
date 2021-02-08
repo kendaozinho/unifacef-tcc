@@ -5,7 +5,10 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 import java.util.HashMap;
 
-public class JwtUtil {
+public final class JwtUtil {
+  private JwtUtil() {
+  }
+
   public static String getEncodedJwt(String jwtSecretKey) {
     return "Bearer " +
         Jwts.builder()

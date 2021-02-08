@@ -2,7 +2,10 @@ package com.unifacef.tcc.util;
 
 import java.net.InetAddress;
 
-public class ServerUtil {
+public final class ServerUtil {
+  private ServerUtil() {
+  }
+
   public static String getHostName() {
     try {
       return InetAddress.getLocalHost().getHostName();
