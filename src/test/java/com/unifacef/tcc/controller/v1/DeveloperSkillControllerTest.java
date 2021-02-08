@@ -28,25 +28,25 @@ public class DeveloperSkillControllerTest extends BaseControllerTest {
 
   @Test
   @Order(3)
-  public void getByDeveloperIdIsOk() throws Throwable {
+  public void getAllByDeveloperIdIsOk() throws Throwable {
     super.getIsOk(this.shortPath + "?developerId=1");
   }
 
   @Test
   @Order(4)
-  public void getByDeveloperIdIsNotFound() throws Throwable {
+  public void getAllByDeveloperIdIsNotFound() throws Throwable {
     super.getIsNotFound(this.shortPath + "?developerId=999", "Developer Skill not found");
   }
 
   @Test
   @Order(5)
-  public void getBySkillIdIsOk() throws Throwable {
+  public void getAllBySkillIdIsOk() throws Throwable {
     super.getIsOk(this.shortPath + "?skillId=1");
   }
 
   @Test
   @Order(6)
-  public void getBySkillIdIsNotFound() throws Throwable {
+  public void getAllBySkillIdIsNotFound() throws Throwable {
     super.getIsNotFound(this.shortPath + "?skillId=999", "Developer Skill not found");
   }
 

@@ -14,6 +14,11 @@ mvn clean install
 mvn spring-boot:run
 ```
 
+## Executar os testes
+```sh
+mvn clean test verify
+```
+
 ## Swagger
 ```
 http://localhost:8080/swagger-ui/

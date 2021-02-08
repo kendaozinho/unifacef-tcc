@@ -34,42 +34,60 @@ public class DeveloperControllerTest extends BaseControllerTest {
 
   @Test
   @Order(3)
-  public void getByNameIsOk() throws Throwable {
-    super.getIsOk(this.path + "?name=Kenneth Gottschalk de Azevedo");
+  public void getAllByIdIsOk() throws Throwable {
+    super.getIsOk(this.path + "?id=1");
   }
 
   @Test
   @Order(4)
-  public void getByNameIsNotFound() throws Throwable {
-    super.getIsNotFound(this.path + "?name=Silvana", "Developer not found");
+  public void getAllByIdIsNotFound() throws Throwable {
+    super.getIsNotFound(this.path + "?id=999", "Developer not found");
   }
 
   @Test
   @Order(5)
+  public void getAllByNameIsOk() throws Throwable {
+    super.getIsOk(this.path + "?name=Kenneth Gottschalk de Azevedo");
+  }
+
+  @Test
+  @Order(6)
+  public void getAllByNameIsNotFound() throws Throwable {
+    super.getIsNotFound(this.path + "?name=Silvana", "Developer not found");
+  }
+
+  @Test
+  @Order(7)
   public void getAllIsOk() throws Throwable {
     super.getIsOk(this.path);
   }
 
   @Test
-  @Order(6)
+  @Order(8)
   public void postIsCreated() throws Throwable {
     super.postIsCreated(this.path, new DeveloperDto(null, "João"));
   }
 
   @Test
-  @Order(7)
+  @Order(9)
+  public void putIsUnchanged() throws Throwable {
+    super.putIsOk(this.path + "/1", new DeveloperDto(null, "Kenneth Gottschalk de Azevedo"));
+  }
+
+  @Test
+  @Order(10)
   public void putIsOk() throws Throwable {
     super.putIsOk(this.path + "/1", new DeveloperDto(null, "Maria"));
   }
 
   @Test
-  @Order(8)
+  @Order(11)
   public void putIsNotFound() throws Throwable {
     super.putIsNotFound(this.path + "/999", new DeveloperDto(null, "João"), "Developer not found");
   }
 
   @Test
-  @Order(9)
+  @Order(12)
   public void deleteIsNoContent() throws Throwable {
     List<Developer> developers = this.repository.findAll();
     developers.sort(Comparator.comparing(Developer::getId));
@@ -80,13 +98,13 @@ public class DeveloperControllerTest extends BaseControllerTest {
   }
 
   @Test
-  @Order(10)
+  @Order(13)
   public void deleteIsNotFound() throws Throwable {
     super.deleteIsNotFound(this.path + "/999", "Developer not found");
   }
 
   @Test
-  @Order(13)
+  @Order(14)
   public void deleteIsUnprocessableEntity() throws Throwable {
     super.deleteIsUnprocessableEntity(this.path + "/1", "Developer is being used");
   }

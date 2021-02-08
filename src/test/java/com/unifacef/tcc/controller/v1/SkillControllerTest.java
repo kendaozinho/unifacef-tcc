@@ -34,54 +34,72 @@ public class SkillControllerTest extends BaseControllerTest {
 
   @Test
   @Order(3)
-  public void getByNameIsOk() throws Throwable {
+  public void getAllByNameIsOk() throws Throwable {
     super.getIsOk(this.path + "?name=Java");
   }
 
   @Test
   @Order(4)
-  public void getByNameIsNotFound() throws Throwable {
+  public void getAllByNameIsNotFound() throws Throwable {
     super.getIsNotFound(this.path + "?name=Go", "Skill not found");
   }
 
   @Test
   @Order(5)
+  public void getAllByIdIsOk() throws Throwable {
+    super.getIsOk(this.path + "?id=1");
+  }
+
+  @Test
+  @Order(6)
+  public void getAllByIdIsNotFound() throws Throwable {
+    super.getIsNotFound(this.path + "?id=999", "Skill not found");
+  }
+
+  @Test
+  @Order(7)
   public void getAllIsOk() throws Throwable {
     super.getIsOk(this.path);
   }
 
   @Test
-  @Order(6)
+  @Order(8)
   public void postIsCreated() throws Throwable {
     super.postIsCreated(this.path, new SkillDto(null, "Python"));
   }
 
   @Test
-  @Order(7)
+  @Order(9)
   public void postIsConflict() throws Throwable {
     super.postIsConflict(this.path, new SkillDto(null, "Python"), "Skill already exists");
   }
 
   @Test
-  @Order(8)
+  @Order(10)
+  public void putIsUnchanged() throws Throwable {
+    super.putIsOk(this.path + "/1", new SkillDto(null, "Java"));
+  }
+
+  @Test
+  @Order(11)
   public void putIsOk() throws Throwable {
     super.putIsOk(this.path + "/1", new SkillDto(null, "Ruby"));
   }
 
   @Test
-  @Order(9)
+  @Order(12)
   public void putIsConflict() throws Throwable {
     super.putIsConflict(this.path + "/1", new SkillDto(null, "C#"), "Skill already exists");
   }
 
   @Test
-  @Order(10)
+  @Order(13)
   public void putIsNotFound() throws Throwable {
     super.putIsNotFound(this.path + "/999", new SkillDto(null, "C++"), "Skill not found");
   }
 
   @Test
-  @Order(11)
+  @Order(14)
   public void deleteIsNoContent() throws Throwable {
     List<Skill> skills = this.repository.findAll();
     skills.sort(Comparator.comparing(Skill::getId));
@@ -92,13 +110,13 @@ public class SkillControllerTest extends BaseControllerTest {
   }
 
   @Test
-  @Order(12)
+  @Order(15)
   public void deleteIsNotFound() throws Throwable {
     super.deleteIsNotFound(this.path + "/999", "Skill not found");
   }
 
   @Test
-  @Order(13)
+  @Order(16)
   public void deleteIsUnprocessableEntity() throws Throwable {
     super.deleteIsUnprocessableEntity(this.path + "/1", "Skill is being used");
   }
