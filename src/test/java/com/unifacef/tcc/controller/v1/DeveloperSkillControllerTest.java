@@ -58,36 +58,42 @@ public class DeveloperSkillControllerTest extends BaseControllerTest {
 
   @Test
   @Order(8)
+  public void getAllIsNotFound() throws Throwable {
+    super.getIsNotFound(this.shortPath + "?offset=10&limit=100", "Data not found");
+  }
+
+  @Test
+  @Order(9)
   public void postIsCreated() throws Throwable {
     super.postIsCreated(this.shortPath, new DeveloperSkillDto(new DeveloperDto(2, null), new SkillDto(2, null)));
   }
 
   @Test
-  @Order(9)
+  @Order(10)
   public void postIsConflict() throws Throwable {
     super.postIsConflict(this.shortPath, new DeveloperSkillDto(new DeveloperDto(2, null), new SkillDto(2, null)), "Developer Skill already exists");
   }
 
   @Test
-  @Order(10)
+  @Order(11)
   public void postIsDeveloperNotFound() throws Throwable {
     super.postIsNotFound(this.shortPath, new DeveloperSkillDto(new DeveloperDto(999, null), new SkillDto(1, null)), "Developer not found");
   }
 
   @Test
-  @Order(11)
+  @Order(12)
   public void postIsSkillNotFound() throws Throwable {
     super.postIsNotFound(this.shortPath, new DeveloperSkillDto(new DeveloperDto(1, null), new SkillDto(999, null)), "Skill not found");
   }
 
   @Test
-  @Order(12)
+  @Order(13)
   public void deleteIsNoContent() throws Throwable {
     super.deleteIsNoContent(this.fullPath.replace("{developerId}", "2").replace("{skillId}", "2"));
   }
 
   @Test
-  @Order(13)
+  @Order(14)
   public void deleteIsNotFound() throws Throwable {
     super.deleteIsNotFound(this.fullPath.replace("{developerId}", "2").replace("{skillId}", "2"), "Developer Skill not found");
   }

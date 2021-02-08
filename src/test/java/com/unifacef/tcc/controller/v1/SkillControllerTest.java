@@ -96,4 +96,10 @@ public class SkillControllerTest extends BaseControllerTest {
   public void deleteIsNotFound() throws Throwable {
     super.deleteIsNotFound(this.path + "/999", "Skill not found");
   }
+
+  @Test
+  @Order(13)
+  public void deleteIsUnprocessableEntity() throws Throwable {
+    super.deleteIsUnprocessableEntity(this.path + "/1", "Skill is being used");
+  }
 }

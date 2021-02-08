@@ -1,10 +1,7 @@
 package com.unifacef.tcc.advice;
 
 import com.unifacef.tcc.base.dto.BaseResponseError;
-import com.unifacef.tcc.exception.BadRequestException;
-import com.unifacef.tcc.exception.ConflictException;
-import com.unifacef.tcc.exception.InternalServerErrorException;
-import com.unifacef.tcc.exception.NotFoundException;
+import com.unifacef.tcc.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -28,6 +25,12 @@ public class CustomRestControllerAdvice {
   @ResponseStatus(HttpStatus.CONFLICT)
   public BaseResponseError catchConflictException(Throwable t) {
     return new BaseResponseError("Conflict", t.getMessage(), HttpStatus.CONFLICT.value());
+  }
+
+  @ExceptionHandler(UnprocessableEntityException.class)
+  @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+  public BaseResponseError catchUnprocessableEntityException(Throwable t) {
+    return new BaseResponseError("Unprocessable Entity", t.getMessage(), HttpStatus.UNPROCESSABLE_ENTITY.value());
   }
 
   @ExceptionHandler({InternalServerErrorException.class, Throwable.class})

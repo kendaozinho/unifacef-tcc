@@ -84,4 +84,10 @@ public class DeveloperControllerTest extends BaseControllerTest {
   public void deleteIsNotFound() throws Throwable {
     super.deleteIsNotFound(this.path + "/999", "Developer not found");
   }
+
+  @Test
+  @Order(13)
+  public void deleteIsUnprocessableEntity() throws Throwable {
+    super.deleteIsUnprocessableEntity(this.path + "/1", "Developer is being used");
+  }
 }

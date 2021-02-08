@@ -2,6 +2,7 @@ package com.unifacef.tcc.business;
 
 import com.unifacef.tcc.controller.v1.dto.DeveloperDto;
 import com.unifacef.tcc.exception.NotFoundException;
+import com.unifacef.tcc.exception.UnprocessableEntityException;
 import com.unifacef.tcc.model.Developer;
 import com.unifacef.tcc.repository.DeveloperRepository;
 import com.unifacef.tcc.repository.DeveloperSkillRepository;
@@ -79,9 +80,9 @@ public class DeveloperBusiness {
       throw new NotFoundException("Developer not found");
     }
 
-    this.developerSkillRepository.findAllByDeveloperId(id).forEach(
-        developerSkill -> this.developerSkillRepository.delete(developerSkill)
-    );
+    if (!this.developerSkillRepository.findAllByDeveloperId(id).isEmpty()) {
+      throw new UnprocessableEntityException("Developer is being used");
+    }
 
     this.repository.delete(developer);
   }

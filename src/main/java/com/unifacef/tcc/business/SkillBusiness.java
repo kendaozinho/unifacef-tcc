@@ -3,6 +3,7 @@ package com.unifacef.tcc.business;
 import com.unifacef.tcc.controller.v1.dto.SkillDto;
 import com.unifacef.tcc.exception.ConflictException;
 import com.unifacef.tcc.exception.NotFoundException;
+import com.unifacef.tcc.exception.UnprocessableEntityException;
 import com.unifacef.tcc.model.Skill;
 import com.unifacef.tcc.repository.DeveloperSkillRepository;
 import com.unifacef.tcc.repository.SkillRepository;
@@ -96,9 +97,9 @@ public class SkillBusiness {
       throw new NotFoundException("Skill not found");
     }
 
-    this.developerSkillRepository.findAllBySkillId(id).forEach(
-        developerSkill -> this.developerSkillRepository.delete(developerSkill)
-    );
+    if (!this.developerSkillRepository.findAllBySkillId(id).isEmpty()) {
+      throw new UnprocessableEntityException("Skill is being used");
+    }
 
     this.repository.delete(skill);
   }

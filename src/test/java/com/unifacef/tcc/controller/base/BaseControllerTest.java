@@ -151,4 +151,12 @@ public class BaseControllerTest {
         .andExpect(MockMvcResultMatchers.jsonPath("$.developerMessage", Matchers.is(developerMessage)))
         .andExpect(MockMvcResultMatchers.jsonPath("$.userMessage", Matchers.is("Not Found")));
   }
+
+  protected void deleteIsUnprocessableEntity(String path, String developerMessage) throws Throwable {
+    this.mock.perform(MockMvcRequestBuilders.delete(path).accept(MediaType.APPLICATION_JSON))
+        .andExpect(MockMvcResultMatchers.status().isUnprocessableEntity())
+        .andExpect(MockMvcResultMatchers.jsonPath("$.errorCode", Matchers.is(422)))
+        .andExpect(MockMvcResultMatchers.jsonPath("$.developerMessage", Matchers.is(developerMessage)))
+        .andExpect(MockMvcResultMatchers.jsonPath("$.userMessage", Matchers.is("Unprocessable Entity")));
+  }
 }
