@@ -1,6 +1,7 @@
 package com.unifacef.tcc.business;
 
 import com.unifacef.tcc.controller.v1.dto.DeveloperDto;
+import com.unifacef.tcc.exception.BadRequestException;
 import com.unifacef.tcc.exception.NotFoundException;
 import com.unifacef.tcc.exception.UnprocessableEntityException;
 import com.unifacef.tcc.model.Developer;
@@ -42,6 +43,10 @@ public class DeveloperBusiness {
   }
 
   public DeveloperDto getById(Integer id) {
+    if (id == null || id <= 0) {
+      throw new BadRequestException("Invalid id");
+    }
+
     Developer developer = this.repository.findOneById(id);
 
     if (developer == null) {
@@ -58,6 +63,10 @@ public class DeveloperBusiness {
   }
 
   public DeveloperDto put(Integer id, DeveloperDto request) {
+    if (id == null || id <= 0) {
+      throw new BadRequestException("Invalid id");
+    }
+
     request.setId(id);
 
     Developer developer = this.repository.findOneById(id);
@@ -74,6 +83,10 @@ public class DeveloperBusiness {
   }
 
   public void delete(Integer id) {
+    if (id == null || id <= 0) {
+      throw new BadRequestException("Invalid id");
+    }
+
     Developer developer = this.repository.findOneById(id);
 
     if (developer == null) {

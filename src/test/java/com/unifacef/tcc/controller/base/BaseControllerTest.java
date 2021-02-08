@@ -144,6 +144,14 @@ public class BaseControllerTest {
         .andExpect(MockMvcResultMatchers.status().isNoContent());
   }
 
+  protected void deleteIsBadRequest(String path, String developerMessage) throws Throwable {
+    this.mock.perform(MockMvcRequestBuilders.delete(path).accept(MediaType.APPLICATION_JSON))
+        .andExpect(MockMvcResultMatchers.status().isBadRequest())
+        .andExpect(MockMvcResultMatchers.jsonPath("$.errorCode", Matchers.is(400)))
+        .andExpect(MockMvcResultMatchers.jsonPath("$.developerMessage", Matchers.is(developerMessage)))
+        .andExpect(MockMvcResultMatchers.jsonPath("$.userMessage", Matchers.is("Bad Request")));
+  }
+
   protected void deleteIsNotFound(String path, String developerMessage) throws Throwable {
     this.mock.perform(MockMvcRequestBuilders.delete(path).accept(MediaType.APPLICATION_JSON))
         .andExpect(MockMvcResultMatchers.status().isNotFound())

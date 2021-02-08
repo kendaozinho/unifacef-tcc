@@ -1,6 +1,7 @@
 package com.unifacef.tcc.business;
 
 import com.unifacef.tcc.controller.v1.dto.DeveloperSkillDto;
+import com.unifacef.tcc.exception.BadRequestException;
 import com.unifacef.tcc.exception.ConflictException;
 import com.unifacef.tcc.exception.NotFoundException;
 import com.unifacef.tcc.model.Developer;
@@ -25,7 +26,7 @@ public class DeveloperSkillBusiness {
   @Autowired
   private SkillRepository skillRepository;
 
-  public ArrayList<DeveloperSkillDto> get(Integer developerId, Integer skillId) {
+  public ArrayList<DeveloperSkillDto> getAll(Integer developerId, Integer skillId) {
     List<DeveloperSkill> developersAndSkills = new ArrayList<>();
 
     if (developerId != null && skillId != null) {
@@ -47,6 +48,24 @@ public class DeveloperSkillBusiness {
     }
 
     return developersAndSkills.stream().map(this::parseModelToDto).collect(Collectors.toCollection(ArrayList::new));
+  }
+
+  public DeveloperSkillDto getById(Integer developerId, Integer skillId) {
+    if (developerId == null || developerId <= 0) {
+      throw new BadRequestException("Invalid developerId");
+    }
+
+    if (skillId == null || skillId <= 0) {
+      throw new BadRequestException("Invalid skillId");
+    }
+
+    DeveloperSkill developerSkill = this.repository.findOneByDeveloperIdAndSkillId(developerId, skillId);
+
+    if (developerSkill == null) {
+      throw new NotFoundException("Developer Skill not found");
+    }
+
+    return this.parseModelToDto(developerSkill);
   }
 
   public DeveloperSkillDto post(DeveloperSkillDto request) {
@@ -77,6 +96,14 @@ public class DeveloperSkillBusiness {
   }
 
   public void delete(Integer developerId, Integer skillId) {
+    if (developerId == null || developerId <= 0) {
+      throw new BadRequestException("Invalid developerId");
+    }
+
+    if (skillId == null || skillId <= 0) {
+      throw new BadRequestException("Invalid skillId");
+    }
+
     DeveloperSkill developerSkill = this.repository.findOneByDeveloperIdAndSkillId(developerId, skillId);
 
     if (developerSkill == null) {

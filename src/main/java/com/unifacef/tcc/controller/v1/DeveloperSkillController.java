@@ -22,7 +22,7 @@ public class DeveloperSkillController {
       @RequestParam(required = false) Integer limit
   ) {
     return BaseResponseSuccess.instanceOf(
-        this.business.get(developerId, skillId), offset, limit
+        this.business.getAll(developerId, skillId), offset, limit
     );
   }
 
@@ -33,7 +33,7 @@ public class DeveloperSkillController {
       @PathVariable Integer skillId
   ) {
     return BaseResponseSuccess.instanceOf(
-        this.business.get(developerId, skillId)
+        this.business.getById(developerId, skillId)
     );
   }
 

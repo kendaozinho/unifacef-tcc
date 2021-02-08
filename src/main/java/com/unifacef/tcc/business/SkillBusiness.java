@@ -1,6 +1,7 @@
 package com.unifacef.tcc.business;
 
 import com.unifacef.tcc.controller.v1.dto.SkillDto;
+import com.unifacef.tcc.exception.BadRequestException;
 import com.unifacef.tcc.exception.ConflictException;
 import com.unifacef.tcc.exception.NotFoundException;
 import com.unifacef.tcc.exception.UnprocessableEntityException;
@@ -47,6 +48,10 @@ public class SkillBusiness {
   }
 
   public SkillDto getById(Integer id) {
+    if (id == null || id <= 0) {
+      throw new BadRequestException("Invalid id");
+    }
+
     Skill skill = this.repository.findOneById(id);
 
     if (skill == null) {
@@ -69,6 +74,10 @@ public class SkillBusiness {
   }
 
   public SkillDto put(Integer id, SkillDto request) {
+    if (id == null || id <= 0) {
+      throw new BadRequestException("Invalid id");
+    }
+
     request.setId(id);
 
     Skill skill = this.repository.findOneById(id);
@@ -91,6 +100,10 @@ public class SkillBusiness {
   }
 
   public void delete(Integer id) {
+    if (id == null || id <= 0) {
+      throw new BadRequestException("Invalid id");
+    }
+
     Skill skill = this.repository.findOneById(id);
 
     if (skill == null) {
