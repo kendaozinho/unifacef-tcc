@@ -16,11 +16,13 @@ public class DeveloperSkillController {
   @GetMapping("/skills")
   @ResponseStatus(HttpStatus.OK)
   public BaseResponseSuccess<DeveloperSkillDto> getAll(
+      @RequestParam(required = false) Integer developerId,
+      @RequestParam(required = false) Integer skillId,
       @RequestParam(required = false) Integer offset,
       @RequestParam(required = false) Integer limit
   ) {
     return BaseResponseSuccess.instanceOf(
-        this.business.get(null, null), offset, limit
+        this.business.get(developerId, skillId), offset, limit
     );
   }
 

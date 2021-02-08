@@ -88,6 +88,15 @@ public class BaseControllerTest {
         .andExpect(MockMvcResultMatchers.jsonPath("$.userMessage", Matchers.is("Conflict")));
   }
 
+  protected void postIsNotFound(String path, Object request, String developerMessage) throws Throwable {
+    this.mock.perform(MockMvcRequestBuilders.post(path).accept(MediaType.APPLICATION_JSON)
+        .contentType(MediaType.APPLICATION_JSON).content(this.mapper.writeValueAsString(request)))
+        .andExpect(MockMvcResultMatchers.status().isNotFound())
+        .andExpect(MockMvcResultMatchers.jsonPath("$.errorCode", Matchers.is(404)))
+        .andExpect(MockMvcResultMatchers.jsonPath("$.developerMessage", Matchers.is(developerMessage)))
+        .andExpect(MockMvcResultMatchers.jsonPath("$.userMessage", Matchers.is("Not Found")));
+  }
+
   protected void putIsOk(String path, Object request) throws Throwable {
     this.mock.perform(MockMvcRequestBuilders.put(path).accept(MediaType.APPLICATION_JSON)
         .contentType(MediaType.APPLICATION_JSON).content(this.mapper.writeValueAsString(request)))

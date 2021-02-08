@@ -2,14 +2,23 @@ package com.unifacef.tcc.controller.v1;
 
 import com.unifacef.tcc.controller.base.BaseControllerTest;
 import com.unifacef.tcc.controller.v1.dto.SkillDto;
+import com.unifacef.tcc.model.Skill;
+import com.unifacef.tcc.repository.SkillRepository;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Comparator;
+import java.util.List;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SkillControllerTest extends BaseControllerTest {
   private String path = "/v1/skills";
+
+  @Autowired
+  private SkillRepository repository;
 
   @Test
   @Order(1)
@@ -74,7 +83,12 @@ public class SkillControllerTest extends BaseControllerTest {
   @Test
   @Order(11)
   public void deleteIsNoContent() throws Throwable {
-    super.deleteIsNoContent(this.path + "/1");
+    List<Skill> skills = this.repository.findAll();
+    skills.sort(Comparator.comparing(Skill::getId));
+
+    Integer id = skills.get(skills.size() - 1).getId();
+
+    super.deleteIsNoContent(this.path + "/" + id);
   }
 
   @Test

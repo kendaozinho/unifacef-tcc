@@ -2,14 +2,23 @@ package com.unifacef.tcc.controller.v1;
 
 import com.unifacef.tcc.controller.base.BaseControllerTest;
 import com.unifacef.tcc.controller.v1.dto.DeveloperDto;
+import com.unifacef.tcc.model.Developer;
+import com.unifacef.tcc.repository.DeveloperRepository;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Comparator;
+import java.util.List;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class DeveloperControllerTest extends BaseControllerTest {
   private String path = "/v1/developers";
+
+  @Autowired
+  private DeveloperRepository repository;
 
   @Test
   @Order(1)
@@ -62,7 +71,12 @@ public class DeveloperControllerTest extends BaseControllerTest {
   @Test
   @Order(9)
   public void deleteIsNoContent() throws Throwable {
-    super.deleteIsNoContent(this.path + "/1");
+    List<Developer> developers = this.repository.findAll();
+    developers.sort(Comparator.comparing(Developer::getId));
+
+    Integer id = developers.get(developers.size() - 1).getId();
+
+    super.deleteIsNoContent(this.path + "/" + id);
   }
 
   @Test
