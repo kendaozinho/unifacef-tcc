@@ -29,7 +29,11 @@ public class SkillBusiness {
         skills.add(skill);
       }
     } else if (name != null && !name.trim().isEmpty()) {
-      skills.add(this.repository.findOneByName(name));
+      Skill skill = this.repository.findOneByName(name);
+
+      if (skill != null) {
+        skills.add(skill);
+      }
     } else {
       skills.addAll(this.repository.findAll());
     }
