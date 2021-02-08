@@ -18,7 +18,7 @@ mvn spring-boot:run
 ```sh
 mvn clean verify
 ```
-OBS: O relatório da cobertura dos testes fica dentro [deste arquivo](./target/jacoco/index.html).
+OBS: O relatório da cobertura dos testes fica [neste arquivo](./target/jacoco/index.html).
 
 ## Swagger
 ```
