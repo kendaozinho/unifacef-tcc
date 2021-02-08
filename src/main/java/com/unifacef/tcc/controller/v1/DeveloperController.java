@@ -22,7 +22,7 @@ public class DeveloperController {
       value = {
           @ApiResponse(code = 200, message = "OK"),
           @ApiResponse(code = 401, message = "Unauthorized"),
-          @ApiResponse(code = 404, message = "Developer not found"),
+          @ApiResponse(code = 404, message = "Developer not found | Data not found"),
           @ApiResponse(code = 500, message = "Internal Server Error")
       }
   )
