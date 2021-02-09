@@ -76,30 +76,24 @@ public class DeveloperControllerTest extends BaseControllerTest {
 
   @Test
   @Order(10)
-  public void putIsUnchanged() throws Throwable {
-    super.putIsOk(this.path + "/1", new DeveloperDto(null, "Kenneth Gottschalk de Azevedo"));
-  }
-
-  @Test
-  @Order(11)
   public void putIsOk() throws Throwable {
     super.putIsOk(this.path + "/1", new DeveloperDto(null, "Maria"));
   }
 
   @Test
-  @Order(12)
+  @Order(11)
   public void putIsBadRequest() throws Throwable {
     super.putIsBadRequest(this.path + "/0", new DeveloperDto(null, "Zé"), "Invalid id");
   }
 
   @Test
-  @Order(13)
+  @Order(12)
   public void putIsNotFound() throws Throwable {
     super.putIsNotFound(this.path + "/999", new DeveloperDto(null, "João"), "Developer not found");
   }
 
   @Test
-  @Order(14)
+  @Order(13)
   public void deleteIsNoContent() throws Throwable {
     List<Developer> developers = this.repository.findAll();
     developers.sort(Comparator.comparing(Developer::getId));
@@ -110,19 +104,19 @@ public class DeveloperControllerTest extends BaseControllerTest {
   }
 
   @Test
-  @Order(15)
+  @Order(14)
   public void deleteIsBadRequest() throws Throwable {
     super.deleteIsBadRequest(this.path + "/0", "Invalid id");
   }
 
   @Test
-  @Order(16)
+  @Order(15)
   public void deleteIsNotFound() throws Throwable {
     super.deleteIsNotFound(this.path + "/999", "Developer not found");
   }
 
   @Test
-  @Order(17)
+  @Order(16)
   public void deleteIsUnprocessableEntity() throws Throwable {
     super.deleteIsUnprocessableEntity(this.path + "/1", "Developer is being used");
   }

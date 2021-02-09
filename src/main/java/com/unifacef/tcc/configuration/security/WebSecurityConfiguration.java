@@ -46,8 +46,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .authenticationEntryPoint((request, response, e) -> {
           response.setStatus(HttpStatus.UNAUTHORIZED.value());
           response.setContentType("application/json");
-          response.getWriter().write(this.mapper.writeValueAsString(
-              new BaseResponseError("Unauthorized", "Unauthorized", 401)));
+          response.getWriter().write(
+              this.mapper.writeValueAsString(
+                  new BaseResponseError("Unauthorized", "Unauthorized", 401)
+              )
+          );
         });
   }
 
