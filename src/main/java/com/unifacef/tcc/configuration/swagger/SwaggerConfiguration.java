@@ -32,12 +32,8 @@ public class SwaggerConfiguration {
         .apiInfo(this.getApiInfo())
         .forCodeGeneration(true)
         .genericModelSubstitutes(ResponseEntity.class)
-        .securityContexts(Collections.singletonList(
-            this.getSecurityContext()
-        ))
-        .securitySchemes(Collections.singletonList(
-            new ApiKey("JWT", "Authorization", "header")
-        ))
+        .securityContexts(Collections.singletonList(this.getSecurityContext()))
+        .securitySchemes(Collections.singletonList(this.getApiKey()))
         .useDefaultResponseMessages(false)
         .consumes(new HashSet<String>() {{
           add("application/json");
@@ -73,5 +69,9 @@ public class SwaggerConfiguration {
         )
         .forPaths(PathSelectors.any())
         .build();
+  }
+
+  private ApiKey getApiKey() {
+    return new ApiKey("JWT", "Authorization", "header");
   }
 }

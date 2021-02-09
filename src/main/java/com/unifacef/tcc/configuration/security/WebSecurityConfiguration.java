@@ -62,22 +62,17 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         "/docs/",
         "/swagger",
         "/swagger/",
-        "/swagger-ui.html",
         "/swagger-ui",
         "/swagger-ui/**",
-        "/v2/api-docs",
+        "/swagger-ui.html",
         "/swagger-resources/**",
+        "/v2/api-docs",
         "/actuator/**"
     );
   }
 
   @Override
-  protected void configure(AuthenticationManagerBuilder authManager) throws Exception {
-  }
-
-  @Bean
-  @Override
-  public AuthenticationManager authenticationManagerBean() throws Exception {
-    return super.authenticationManagerBean();
+  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    // Disable UserDetailsServiceAutoConfiguration from output
   }
 }
