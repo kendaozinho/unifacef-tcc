@@ -61,7 +61,7 @@ public final class BaseResponseSuccess<T> {
     }
 
     BaseResponseSuccess response = new BaseResponseSuccess();
-    response.setMeta(ServerUtil.getHostName(), ApplicationUtil.getVersion(), offset, limit, newList.size());
+    response.setMeta(ServerUtil.getHostName(), ApplicationUtil.getVersion(), offset, limit, count);
     response.setRecords(newList);
     return response;
   }
@@ -70,8 +70,8 @@ public final class BaseResponseSuccess<T> {
     return this.meta;
   }
 
-  private void setMeta(String server, String version, Integer offset, Integer limit, Integer recordCount) {
-    this.meta = new Meta(server, version, offset, limit, recordCount);
+  private void setMeta(String server, String version, Integer offset, Integer limit, Integer total) {
+    this.meta = new Meta(server, version, offset, limit, total);
   }
 
   public ArrayList<T> getRecords() {
@@ -90,14 +90,14 @@ public final class BaseResponseSuccess<T> {
     private String version;
     private Integer offset;
     private Integer limit;
-    private Integer recordCount;
+    private Integer total;
 
-    public Meta(String server, String version, Integer offset, Integer limit, Integer recordCount) {
+    public Meta(String server, String version, Integer offset, Integer limit, Integer total) {
       this.server = server;
       this.version = version;
       this.offset = offset;
       this.limit = limit;
-      this.recordCount = recordCount;
+      this.total = total;
     }
 
     public String getServer() {
@@ -116,8 +116,8 @@ public final class BaseResponseSuccess<T> {
       return this.limit;
     }
 
-    public Integer getRecordCount() {
-      return this.recordCount;
+    public Integer getTotal() {
+      return this.total;
     }
   }
 }
