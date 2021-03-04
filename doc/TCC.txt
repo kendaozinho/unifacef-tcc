@@ -51,7 +51,6 @@ FRANCA
 
 
 
-
 RESUMO
 
 Atualmente, a utilização de APIs (Interface de Programação de Aplicações) vem se tornando cada vez mais comum no contexto corporativo, o que não é de se estranhar, já que elas proporcionam uma vasta quantidade de benefícios envolvendo aspectos como praticidade, performance e segurança. Em meio a esta quantidade numerosa de benefícios, existe a possibilidade de integrar aplicações, no entanto, para que este feito se realize, é imprescindível que a aplicação solicitante de recursos siga uma documentação antes de usufruir das funcionalidades fornecidas pela API, e é neste momento que se deve enfatizar a importância do uso de padrões de design. O objetivo deste trabalho é, com base em pesquisas, apresentar os possíveis problemas causados pela falta de padrão e sugerir boas práticas de desenvolvimento usando como referência uma API feita pelos próprios autores em virtude dos conhecimentos adquiridos durante o curso, sempre enfatizando de que nada descrito tem a obrigação de ser seguido.
@@ -59,8 +58,6 @@ Atualmente, a utilização de APIs (Interface de Programação de Aplicações) 
 Palavras-chave: Padrões de Design. API REST. Integração de Aplicações.
 
 Submissão: 15/03/2021
-
-
 
 
 
