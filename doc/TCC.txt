@@ -138,7 +138,7 @@ Há casos em que o verbo POST é utilizado para realizar operações lógicas ao
     • Caminho — nome e localização de determinado recurso.
 
 As URLs também podem possuir variáveis de caminho e/ou parâmetros de requisição, que consistem em filtrar uma busca ou identificar um registro.
-A figura a seguir possui alguns exemplos de como realizar a junção do verbo com a URL (ressaltando que, nas rotas de inclusão e alteração, os dados de requisição do registro ficam no corpo da mensagem).
+A figura a seguir mostra como realizar a junção do verbo com a URL (ressaltando que, nas rotas de inclusão e alteração, os dados de requisição do registro ficam no corpo da mensagem):
 
   Figura 1 — Exemplo de rotas para buscar, incluir, alterar ou excluir registros.
 
@@ -155,7 +155,7 @@ Para resolver esse tipo de problema é necessário adicionar uma nova versão na
 
   Fonte: Documentação da API do Trabalho de Conclusão de Curso – Os autores.
 
-Uma ótima maneira de se realizar autenticações é introduzindo chaves de API no cabeçalho da requisição, independentemente do tipo da autenticação. No caso da API desenvolvida pelos autores, foi-se utilizada a autenticação JWT e a chave se encontra exposta na documentação para facilitar os testes feitos pelo usuário (lembrando que não é uma boa prática expor dados sensíveis, sendo este, um caso de exceção).
+Uma ótima maneira de se realizar autenticações é introduzindo chaves de API no cabeçalho da requisição, independentemente do tipo da autenticação. No caso da API desenvolvida pelos autores, foi-se utilizada a autenticação JWT e a chave se encontra exposta na documentação para facilitar os testes feitos pelos usuários (lembrando que não é uma boa prática expor dados sensíveis, sendo este, um caso de exceção).
 
 2.5 BODY
 
@@ -182,7 +182,7 @@ No exemplo anterior, o corpo da mensagem de resposta é separado em meta (conten
 
   Fonte: Documentação da API do Trabalho de Conclusão de Curso – Os autores.
 
-	Na figura a seguir é possível se deparar com a quantidade imensa dos códigos de status diferentes criados até o momento.
+	Na figura a seguir é possível se deparar com a quantidade imensa de códigos de status diferentes criados até o momento:
 
   Figura 5 — Lista de todos os códigos de status até o momento.
 
@@ -197,7 +197,7 @@ Lista dos códigos de status de sucesso mais utilizados:
     • 202 (ACCEPTED) — utilizado em rotas que realizam processos de maneira assíncrona;
     • 204 (NO CONTENT) — utilizado em rotas que não possuem conteúdo de resposta, como por exemplo, rotas do tipo DELETE;
     • 206 (PARTIAL CONTENT) — utilizado em rotas que possuem paginação;
-    • 207 (MULTI-STATUS) — utilizado em rotas que processam vários dados dados ao mesmo tempo, podendo haver dados processados com sucesso e dados processados com erro, tudo em uma mesma chamada.
+    • 207 (MULTI-STATUS) — utilizado em rotas que processam vários dados ao mesmo tempo, podendo haver dados processados com sucesso e dados processados com erro, tudo em uma mesma chamada.
 
 Lista dos códigos de status de erro por parte do client mais utilizados:
 
@@ -232,7 +232,7 @@ Uma forma válida de ordenar registros é informando o nome do campo que vai ser
 3 PADRÕES DE NOMENCLATURA
 
 É essencial que haja um padrão de nomenclatura nas rotas e nos dados de requisição/resposta, pois isso facilita a interpretação da documentação da API. Há diversos tipos de padrões de nomenclatura, porém, é imprescindível que apenas um deles seja utilizado.
-A tabela a seguir mostra alguns padrões que podem ser utilizados nas rotas de uma API.
+A tabela a seguir mostra alguns padrões que podem ser utilizados nas rotas de uma API:
 
 TIPO
 EXEMPLO
@@ -252,7 +252,7 @@ Vale salientar de que é importante utilizar apenas uma língua durante o desenv
 
 4 DOCUMENTAÇÃO
 
-Após desenvolver uma API, é necessário expor as suas funcionalidades aos clients e, para isso, uma documentação precisa ser feita. Uma ótima ferramenta para isso é o Swagger.
+Após desenvolver uma API, é necessário expor as suas funcionalidades aos clients e, para isso, uma documentação precisa ser feita. Uma ótima ferramenta para este propósito é o Swagger.
 “A principal vantagem do Swagger é que o mesmo possui uma dependência para as principais linguagens de programação do mercado, e funciona basicamente lendo as anotações do código, o que facilita muito que a cada alteração no código, sua documentação permaneça atualizada” (SILVA, 2018).
 
   Figura 7 — Exemplo de documentação via Swagger (versão 3.0.0).
