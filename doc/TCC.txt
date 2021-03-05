@@ -46,7 +46,6 @@ FRANCA
 
 
 
-
 RESUMO
 
 Atualmente, a utilização de APIs (Interface de Programação de Aplicações) vem se tornando cada vez mais comum no contexto corporativo, o que não é de se estranhar, já que elas proporcionam uma vasta quantidade de benefícios envolvendo aspectos como praticidade, performance e segurança. Em meio a esta quantidade numerosa de benefícios, existe a possibilidade de integrar aplicações, no entanto, para que este feito se realize, é imprescindível que a aplicação requisitante siga uma documentação antes de usufruir dos recursos fornecidos pela API, e é neste momento que se deve enfatizar a importância do uso de padrões de design. O objetivo deste trabalho é, com base em pesquisas, apresentar os possíveis problemas causados pela falta de padrão e sugerir boas práticas de desenvolvimento usando como referência uma API feita pelos próprios autores em virtude dos conhecimentos adquiridos durante o curso, sempre enfatizando de que nada descrito tem a obrigação de ser seguido.
@@ -89,16 +88,14 @@ Submissão: 15/03/2021
 
 
 
-
-
 1 INTRODUÇÃO
 
 A partir do momento que o desenvolvimento de APIs ganhou destaque na área da tecnologia, o número de empresas que resolveram utilizá-las aumentou drasticamente, porém, muitas destas empresas não estabeleceram padrões em suas APIs, não tendo noção dos problemas que isto poderia acarretar no futuro. Esse tipo de situação também ocorre com frequência nos dias atuais.
-Tendo em vista este cenário, foi feita uma pesquisa sobre quais deveriam ser os pontos mais relevantes a serem levados em consideração pelas APIs para que elas fossem classificadas de qualidade e de fácil entendimento, proporcionando assim, uma integração sem complicações entre as aplicações.
+Estes dados foram obtidos analisando as numerosas APIs públicas que estão expostas na internet e, tendo em vista este cenário, foi feita uma pesquisa sobre quais deveriam ser os pontos mais relevantes a serem levados em consideração pelas APIs para que elas fossem classificadas de qualidade e de fácil entendimento, proporcionando assim, uma integração sem complicações entre as aplicações.
 Com base nas buscas realizadas, foram encontrados diversos tipos de padrões de desenvolvimento válidos e, baseando-se neles, concluiu-se que é fundamental que uma API utilize os verbos corretamente de acordo com a ação, contenha URLs que estejam relacionadas às entidades, disponibilize a paginação e a ordenação de registros, retorne os códigos de status corretamente com base em cada tipo de situação, siga um padrão de nomenclatura e forneça uma documentação fácil de ser interpretada.
 A API desenvolvida pelos autores engloba todos os aspectos abordados anteriormente, possuindo operações de busca, inclusão, alteração e exclusão de registros. Os exemplos citados neste trabalho estão baseados nesta API e o link da sua documentação encontra-se nas referências.
 Levando em consideração que este trabalho possui um tema de difícil compreensão, os autores visaram explicar e exemplificar cada um dos assuntos abordados na pesquisa de uma maneira fácil de entender, buscando agregar todos os tipos de leitores.
-Se uma API for desenvolvida em cima das sugestões descritas neste trabalho, ela será considerada apta para realizar integrações sem enfrentar nenhum tipo de dificuldade.
+Se uma API for desenvolvida utilizando este trabalho como um guia, ela estará apta para realizar integrações sem enfrentar nenhum tipo de dificuldade.
 
 2 API REST
 
@@ -224,7 +221,7 @@ Uma das formas existentes de paginar registros é informar, via parâmetros de r
   Fonte: Documentação da API do Trabalho de Conclusão de Curso – Os autores.
 
 Em relação à ordenação, é aconselhável que a funcionalidade fique dentro da API para evitar que haja desenvolvimento nas aplicações requisitantes.
-Uma forma válida de ordenar registros é informando o nome do campo que será ordenado junto ao tipo de ordenação (crescente ou decrescente), por exemplo: v1/developers?offset=0&limit=3&sort=+name.
+Uma forma válida de ordenar registros é informando o nome do campo que precisa ser ordenado junto ao tipo de ordenação (crescente ou decrescente), por exemplo: v1/developers?offset=0&limit=3&sort=+name.
 
 3 PADRÕES DE NOMENCLATURA
 
@@ -260,8 +257,7 @@ Uma outra grande vantagem de se utilizar o Swagger é a possibilidade de chamar 
 
 5 CONCLUSÃO
 
-Se uma API conter todas as especificações citadas neste trabalho, ela estará apta para ser utilizada por outras aplicações. O desenvolvimento de APIs em si é um assunto muito amplo, não sendo possível relatar e padronizar todos os casos. Ocorrerá situações onde uma API deverá ser desenvolvida de uma maneira diferente para atender aos requisitos de uma determinada demanda, não sendo possível seguir à risca todas as boas práticas aqui descritas. Mas sempre haverá uma solução para cada tipo de situação e, com uma API bem documentada, não haverá problemas durante a integração entre as aplicações.
-
+Se uma API conter todas as especificações citadas neste trabalho, ela estará apta para ser utilizada por outras aplicações. O desenvolvimento de APIs em si é um assunto muito amplo, não sendo possível relatar e padronizar todos os casos. Ocorrerá situações onde uma API deverá ser desenvolvida de uma maneira diferente para atender aos requisitos de uma determinada demanda, não sendo possível seguir à risca todas as boas práticas aqui descritas. Mas sempre haverá uma solução para cada tipo de situação e, com uma API bem documentada, não haverá problemas durante a integração entre as aplicações, seja internamente ou externamente.
 REFERÊNCIAS
 
 ABINADER, Jorge Abílio; LINS, Rafael Dueire. Web Services em Java. Rio de Janeiro: Brasport, 2006.
