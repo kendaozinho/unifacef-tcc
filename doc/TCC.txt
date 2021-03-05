@@ -47,7 +47,6 @@ FRANCA
 
 
 
-
 RESUMO
 
 Atualmente, a utilização de APIs (Interface de Programação de Aplicações) vem se tornando cada vez mais comum no contexto corporativo, o que não é de se estranhar, já que elas proporcionam uma vasta quantidade de benefícios envolvendo aspectos como praticidade, performance e segurança. Em meio a esta quantidade numerosa de benefícios, existe a possibilidade de integrar aplicações, no entanto, para que este feito se realize, é imprescindível que a aplicação requisitante siga uma documentação antes de usufruir dos recursos fornecidos pela API, e é neste momento que se deve enfatizar a importância do uso de padrões de design. O objetivo deste trabalho é, com base em pesquisas, apresentar os possíveis problemas causados pela falta de padrão e sugerir boas práticas de desenvolvimento usando como referência uma API feita pelos próprios autores em virtude dos conhecimentos adquiridos durante o curso, sempre enfatizando de que nada descrito tem a obrigação de ser seguido.
@@ -92,13 +91,11 @@ Submissão: 15/03/2021
 
 
 
-
-
 1 INTRODUÇÃO
 
 A partir do momento que o desenvolvimento de APIs ganhou destaque na área da tecnologia, o número de empresas que resolveram utilizá-las aumentou drasticamente, porém, muitas destas empresas não estabeleceram padrões em suas APIs, não tendo noção dos problemas que isto poderia acarretar no futuro. Esse tipo de situação também ocorre com frequência nos dias atuais.
 Tendo em vista este cenário, foi feita uma pesquisa sobre quais deveriam ser os pontos mais relevantes a serem levados em consideração pelas APIs para que elas fossem classificadas de qualidade e de fácil entendimento, proporcionando assim, uma integração sem complicações entre as aplicações.
-Com base nas buscas realizadas, foram encontrados diversos tipos de padrões de desenvolvimento válidos e, baseando-se neles, concluiu-se que é fundamental que uma API utilize os verbos corretamente de acordo com cada ação, contenha URLs que estejam relacionadas às entidades, disponibilize a paginação e a ordenação de registros, retorne os códigos de status corretos com base em cada tipo de situação, siga um padrão de nomenclatura e forneça uma documentação fácil de ser interpretada.
+Com base nas buscas realizadas, foram encontrados diversos tipos de padrões de desenvolvimento válidos e, baseando-se neles, concluiu-se que é fundamental que uma API utilize os verbos corretamente de acordo com a ação, contenha URLs que estejam relacionadas às entidades, disponibilize a paginação e a ordenação de registros, retorne os códigos de status corretamente com base em cada tipo de situação, siga um padrão de nomenclatura e forneça uma documentação fácil de ser interpretada.
 A API desenvolvida pelos autores engloba todos os aspectos abordados anteriormente, possuindo operações de busca, inclusão, alteração e exclusão de registros. Os exemplos citados neste trabalho estão baseados nesta API e o link da sua documentação encontra-se nas referências.
 Levando em consideração que este trabalho possui um tema de difícil compreensão, os autores visaram explicar e exemplificar cada um dos assuntos abordados na pesquisa de uma maneira fácil de entender, buscando agregar todos os tipos de leitores.
 Se uma API for desenvolvida em cima das sugestões descritas neste trabalho, ela será considerada apta para realizar integrações sem enfrentar nenhum tipo de dificuldade.
@@ -113,8 +110,8 @@ A sigla API é a abreviatura de Application Programming Interface e se trata de 
 
 Os Web Services surgiram como consequência natural da utilização da Internet. Alguns consideram essa utilização massificada, como um processo que produz a evolução desse meio de comunicação entre pessoas, e também como grande rede de computadores, o que naturalmente levou à possibilidade de se escrever aplicações e disponibilizá-las ao público em grande escala. (ABINADER; LINS. 2006, p. 10)
 
-Já a sigla REST, que é a abreviatura de Representational State Transfer, se trata de um conjunto de padrões de arquitetura que devem ser seguidos para a criação de Web Services. RESTful é um termo atribuído à API que segue os padrões REST.
-As APIs têm como principal função expor recursos na Web, sendo que cada recurso possui uma maneira diferente de ser adquirido. Para isso, o client (aplicação requisitante de recursos) e o server (aplicação fornecedora de recursos) se comunicam através de mensagens HTTP compostas por URL, verbo, cabeçalho(s), corpo e código de status.
+Já a sigla REST, que é a abreviatura de Representational State Transfer, se trata de um conjunto de padrões de arquitetura que devem ser seguidos durante o desenvolvimento de Web Services. RESTful é um termo atribuído à API que segue os padrões REST.
+As APIs têm como principal função expor recursos na Web, sendo que cada recurso possui uma maneira diferente de ser adquirido. Para isso, o client (aplicação requisitante de recursos) e o server (aplicação fornecedora de recursos) se comunicam através de mensagens HTTP compostas por verbo, URL, cabeçalho(s), corpo e código de status.
 
 2.2 VERBOS
 
@@ -155,7 +152,7 @@ Para resolver esse tipo de problema é necessário adicionar uma nova versão na
 
   Fonte: Documentação da API do Trabalho de Conclusão de Curso – Os autores.
 
-Uma ótima maneira de se realizar autenticações é introduzindo chaves de API no cabeçalho da requisição, independentemente do tipo da autenticação. No caso da API desenvolvida pelos autores, foi-se utilizada a autenticação JWT e a chave se encontra exposta na documentação para facilitar os testes feitos pelos usuários (lembrando que não é uma boa prática expor dados sensíveis, sendo este, um caso de exceção).
+Uma ótima maneira de se realizar autenticações é introduzindo chaves de API no cabeçalho da requisição, independentemente do tipo da autenticação. No caso da API desenvolvida pelos autores, foi-se utilizada a autenticação JWT e a chave se encontra exposta na documentação para facilitar os testes feitos pelos usuários (lembrando que não é uma boa prática expor dados sensíveis em uma documentação, sendo este, um caso de exceção).
 
 2.5 BODY
 
@@ -165,7 +162,7 @@ Uma ótima maneira de se realizar autenticações é introduzindo chaves de API 
 
   Fonte: Documentação da API do Trabalho de Conclusão de Curso – Os autores.
 
-No exemplo anterior, o corpo da mensagem de resposta é separado em meta (contendo dados de paginação, nome do servidor e versão da aplicação) e records (contendo os registros). Esse tipo de padrão facilita o desenvolvimento nas aplicações requisitantes, já que todas as respostas possuem o mesmo formato e sempre haverá registros nas chamadas com sucesso.
+No exemplo anterior, o corpo da mensagem de resposta é separado em meta (contendo dados de paginação, nome do servidor e versão da aplicação) e records (contendo o conteúdo dos registros). Esse tipo de padrão facilita o desenvolvimento nas aplicações requisitantes, já que todas as respostas possuem o mesmo formato e sempre haverá registros nas chamadas com sucesso.
 É aconselhável que o corpo das mensagens possua uma relação com a entidade que a rota se associa (em exceção dos casos de exclusão, pois não há conteúdo de resposta).
 
 2.6 STATUS CODE
@@ -188,7 +185,7 @@ No exemplo anterior, o corpo da mensagem de resposta é separado em meta (conten
 
   Fonte: Http Status Codes Cheat Sheet – Konstantin Stepanov.
 
-Implementar todos os códigos de status à risca é uma tarefa complexa e que exige muita paciência. Para isso, foi feito um levantamento dos códigos de status mais utilizados pelas APIs junto à especificação de cada um deles.
+Implementar todos os códigos de status à risca é uma tarefa complexa e que exige muita paciência. Para isso, foi feito um levantamento dos códigos de status mais utilizados pelas APIs junto com a especificação de cada um deles.
 
 Lista dos códigos de status de sucesso mais utilizados:
 
@@ -214,12 +211,12 @@ Lista dos códigos de status de erro por parte do client mais utilizados:
 
 Lista dos códigos de status de erro por parte do server mais utilizados:
 
-    • 500 (INTERNAL SERVER ERROR) — utilizado quando ocorre erros inesperados ou falta de tratativas durante o processamento dos dados;
+    • 500 (INTERNAL SERVER ERROR) — utilizado quando ocorre algum tipo de erro inesperado durante o processamento dos dados;
     • 502 (BAD GATEWAY) — utilizado quando uma dependência externa apresenta algum tipo de comportamento inesperado.
 
 2.7 PAGINAÇÃO E ORDENAÇÃO
 
-As rotas que retornam mais de um registro precisam ser paginadas pois, desta forma, será trafegado somente o necessário e a API ficará mais performática, oferecendo uma melhor experiência para as aplicações requisitantes.
+As rotas que retornam mais de um registro precisam ser paginadas pois, desta forma, será trafegado somente o necessário e a API se tornará mais performática, oferecendo uma melhor experiência às aplicações requisitantes.
 Uma das formas existentes de paginar registros é informar, via parâmetros de requisição, o número da página atual e a quantidade de registros por página. É desejável que o total de registros também seja retornado pela API para que a aplicação requisitante saiba a quantidade de páginas existentes.
 
   Figura 6 — Exemplo de uma busca de registros com paginação.
@@ -227,7 +224,7 @@ Uma das formas existentes de paginar registros é informar, via parâmetros de r
   Fonte: Documentação da API do Trabalho de Conclusão de Curso – Os autores.
 
 Em relação à ordenação, é aconselhável que a funcionalidade fique dentro da API para evitar que haja desenvolvimento nas aplicações requisitantes.
-Uma forma válida de ordenar registros é informando o nome do campo que vai ser ordenado junto ao tipo da ordenação (crescente ou decrescente), por exemplo: v1/developers?offset=0&limit=1&sort=+name.
+Uma forma válida de ordenar registros é informando o nome do campo que será ordenado junto ao tipo de ordenação (crescente ou decrescente), por exemplo: v1/developers?offset=0&limit=3&sort=+name.
 
 3 PADRÕES DE NOMENCLATURA
 
@@ -247,12 +244,12 @@ Snake Case
 Spinal Case
 /v1/marketplace-products/
 
-No caso dos dados de requisição e de resposta, é aconselhável utilizar o plural para os dados que correspondem à listas e o singular para o restante dos dados. O camel case, snake case e spinal case também são exemplos de padrões que podem ser aplicados a estes dados.
+No caso dos dados de requisição e de resposta, é aconselhável utilizar o plural para os dados que correspondem à listas e o singular para o restante dos dados. O Camel Case, Snake Case e Spinal Case também são exemplos de padrões que podem ser aplicados a estes dados.
 Vale salientar de que é importante utilizar apenas uma língua durante o desenvolvimento de uma API (não misturar português e inglês, por exemplo).
 
 4 DOCUMENTAÇÃO
 
-Após desenvolver uma API, é necessário expor as suas funcionalidades aos clients e, para isso, uma documentação precisa ser feita. Uma ótima ferramenta para este propósito é o Swagger.
+Após finalizar o desenvolvimento de uma API, é necessário expor as suas funcionalidades às aplicações requisitantes e, para isso, uma documentação deve ser feita. Uma ótima ferramenta para este propósito é o Swagger.
 “A principal vantagem do Swagger é que o mesmo possui uma dependência para as principais linguagens de programação do mercado, e funciona basicamente lendo as anotações do código, o que facilita muito que a cada alteração no código, sua documentação permaneça atualizada” (SILVA, 2018).
 
   Figura 7 — Exemplo de documentação via Swagger (versão 3.0.0).
@@ -263,15 +260,15 @@ Uma outra grande vantagem de se utilizar o Swagger é a possibilidade de chamar 
 
 5 CONCLUSÃO
 
-Se uma API contém todas as especificações citadas neste trabalho, ela está apta para ficar exposta, sem preocupações. O desenvolvimento de APIs em si é um assunto muito amplo, não sendo possível relatar e padronizar todos os casos. Ocorrerá situações onde uma API deverá ser desenvolvida de uma maneira diferente para atender aos requisitos de uma determinada demanda, não sendo possível seguir à risca todas as boas práticas aqui descritas. Mas sempre haverá uma solução para cada tipo de situação e, com uma API bem documentada, não haverá problemas durante a integração entre as aplicações.
+Se uma API conter todas as especificações citadas neste trabalho, ela estará apta para ser utilizada por outras aplicações. O desenvolvimento de APIs em si é um assunto muito amplo, não sendo possível relatar e padronizar todos os casos. Ocorrerá situações onde uma API deverá ser desenvolvida de uma maneira diferente para atender aos requisitos de uma determinada demanda, não sendo possível seguir à risca todas as boas práticas aqui descritas. Mas sempre haverá uma solução para cada tipo de situação e, com uma API bem documentada, não haverá problemas durante a integração entre as aplicações.
 
 REFERÊNCIAS
 
 ABINADER, Jorge Abílio; LINS, Rafael Dueire. Web Services em Java. Rio de Janeiro: Brasport, 2006.
 
-SILVA, William da. Design de API Rest. Disponível em: https://medium.com/@wssilva.willian/design-de-api-rest-9807a5b16c9f. Acesso em: 20 fev. 2021.
+SILVA, William da. Design de API Rest. Disponível em: https://medium.com/@wssilva.willian/design-de-api-rest-9807a5b16c9f. Acesso em: 15 jan. 2021.
 
-STEPANOV, Konstantin. HTTP Status Codes Cheat Sheet. Disponível em: https://cheatography.com/kstep/cheat-sheets/http-status-codes/. Acesso em: 28 fev. 2021.
+STEPANOV, Konstantin. HTTP Status Codes Cheat Sheet. Disponível em: https://cheatography.com/kstep/cheat-sheets/http-status-codes/. Acesso em: 20 fev. 2021.
 
 BORGES, Caio Cesar Alves; AZEVEDO, Kenneth Gottschalk de. Documentação da API do Trabalho de Conclusão de Curso. Disponível em: https://unifacef-tcc.herokuapp.com/swagger-ui/. Acesso em: 01 mar. 2021.
 
