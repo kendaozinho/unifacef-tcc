@@ -240,7 +240,7 @@ Vale salientar de que também é importante utilizar apenas uma língua durante 
 
 4 DOCUMENTAÇÃO
 
-Após a finalização do desenvolvimento de uma API, é necessário a exposição de suas funcionalidades às aplicações requisitantes e, para isso, uma documentação deve ser criada. Uma ótima ferramenta para este propósito é o Swagger.
+Após a finalização do desenvolvimento de uma API, é necessário a exposição de suas funcionalidades às aplicações requisitantes e, para isso, uma documentação deve ser feita. Uma ótima ferramenta para este propósito é o Swagger.
 “A principal vantagem do Swagger é que o mesmo possui uma dependência para as principais linguagens de programação do mercado, e funciona basicamente lendo as anotações do código, o que facilita muito que a cada alteração no código, sua documentação permaneça atualizada” (SILVA, 2018).
 
   Figura 7 — Exemplo de documentação via Swagger (versão 3.0.0).
@@ -251,7 +251,7 @@ Uma outra grande vantagem de se utilizar o Swagger é a possibilidade de chamar 
 
 5 CONCLUSÃO
 
-Se uma API conter todas as especificações citadas neste trabalho, ela estará apta para ser utilizada por outras aplicações. O desenvolvimento de APIs em si é um assunto muito amplo, não sendo possível relatar e padronizar todos os casos. Ocorrerá situações onde uma API deverá ser desenvolvida de uma maneira diferente para atender aos requisitos de uma determinada demanda, não sendo possível seguir à risca todas as boas práticas aqui descritas. Mas sempre haverá uma solução para cada tipo de situação e, com uma API bem documentada, não haverá problemas para realizar a integração entre as aplicações.
+Se uma API conter todas as especificações citadas neste trabalho, ela estará apta para ser utilizada por outras aplicações. O desenvolvimento de APIs em si é um assunto muito amplo, não sendo possível relatar e padronizar todos os casos. Ocorrerá situações onde uma API deverá ser desenvolvida de uma maneira diferente para atender aos requisitos de uma determinada demanda, não sendo possível seguir à risca todas as boas práticas aqui descritas. Mas sempre haverá uma solução para cada tipo de situação e, com uma API bem documentada, não haverá problemas de integração com outras aplicações.
 
 REFERÊNCIAS
 
