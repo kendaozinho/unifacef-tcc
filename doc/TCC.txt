@@ -153,7 +153,7 @@ Uma ótima maneira de se realizar autenticações é introduzindo chaves de API 
 
   Fonte: Documentação da API do Trabalho de Conclusão de Curso – Os autores.
 
-No exemplo anterior, o corpo da mensagem de resposta é separado em meta (contendo dados de paginação, nome do servidor e versão da aplicação) e records (contendo o conteúdo dos registros). Esse tipo de padrão facilita o desenvolvimento nas aplicações requisitantes, pois considera-se que todas as respostas irão possuir o mesmo formato e sempre haverá registros nas chamadas com sucesso.
+No exemplo anterior, o corpo da mensagem de resposta é separado em meta (contendo dados de paginação, nome do servidor e versão da aplicação) e records (contendo o conteúdo dos registros). Esse tipo de padrão facilita a integração por parte das aplicações requisitantes, pois pode-se considerar que todas as respostas terão o mesmo formato e que sempre haverá registros nas chamadas com sucesso.
 É aconselhável que o corpo das mensagens possua uma relação com a entidade que a rota se associa (em exceção dos casos de exclusão, pois não há conteúdo de resposta).
 
 2.6 STATUS CODE
@@ -170,7 +170,7 @@ No exemplo anterior, o corpo da mensagem de resposta é separado em meta (conten
 
   Fonte: Documentação da API do Trabalho de Conclusão de Curso – Os autores.
 
-	A figura a seguir mostra a quantidade imensa de códigos de status diferentes criados até o momento:
+	A figura a seguir mostra a enorme variedade de códigos de status criados até o momento:
 
   Figura 5 — Lista de todos os códigos de status até o momento.
 
@@ -219,15 +219,15 @@ Uma forma válida de ordenar registros é informando o nome do campo que será u
 
 3 PADRÕES DE NOMENCLATURA
 
-É essencial que uma API possua um padrão de nomenclatura nas rotas e nos dados de requisição/resposta, pois as aplicações requisitantes vão partir dessa premissa para realizar a integração. Há diversos tipos de padrões de nomenclatura, porém, é imprescindível que apenas um deles seja utilizado.
-A tabela a seguir mostra alguns padrões que podem ser utilizados nas rotas de uma API:
+É essencial que uma API possua um padrão de nomenclatura nas rotas e nos dados de requisição/resposta, pois as aplicações requisitantes consideram isto como uma premissa para realizar integrações. Há diversos tipos de padrões de nomenclatura, porém, é imprescindível que apenas um deles seja utilizado.
+A tabela a seguir mostra alguns exemplos de padrões utilizados em rotas:
 
 TIPO
 EXEMPLO
-Plural
-/v1/products/
 Singular
 /v1/product/
+Plural
+/v1/products/
 Camel Case
 /v1/marketplaceProducts/
 Snake Case
@@ -235,12 +235,12 @@ Snake Case
 Spinal Case
 /v1/marketplace-products/
 
-No caso dos dados de requisição e de resposta, é aconselhável utilizar o plural para os dados que correspondem à listas e o singular para o restante dos dados. O Camel Case, Snake Case e Spinal Case também são exemplos de padrões que podem ser aplicados a estes dados.
+No caso dos dados de requisição e de resposta, é aconselhável a utilização do plural em dados do tipo lista e o singular para o restante dos dados. O Camel Case, Snake Case e Spinal Case também são exemplos de padrões que podem ser aplicados a estes dados.
 Vale salientar de que também é importante utilizar apenas uma língua durante o desenvolvimento de uma API (não misturar português e inglês, por exemplo).
 
 4 DOCUMENTAÇÃO
 
-Após a finalização do desenvolvimento de uma API, é necessário a exposição das funcionalidades às aplicações requisitantes e, para isso, uma documentação deve ser feita. Uma ótima ferramenta para este propósito é o Swagger.
+Após a finalização do desenvolvimento de uma API, é necessário a exposição de suas funcionalidades às aplicações requisitantes e, para isso, uma documentação deve ser criada. Uma ótima ferramenta para este propósito é o Swagger.
 “A principal vantagem do Swagger é que o mesmo possui uma dependência para as principais linguagens de programação do mercado, e funciona basicamente lendo as anotações do código, o que facilita muito que a cada alteração no código, sua documentação permaneça atualizada” (SILVA, 2018).
 
   Figura 7 — Exemplo de documentação via Swagger (versão 3.0.0).
@@ -251,7 +251,7 @@ Uma outra grande vantagem de se utilizar o Swagger é a possibilidade de chamar 
 
 5 CONCLUSÃO
 
-Se uma API conter todas as especificações citadas neste trabalho, ela estará apta para ser utilizada por outras aplicações. O desenvolvimento de APIs em si é um assunto muito amplo, não sendo possível relatar e padronizar todos os casos. Ocorrerá situações onde uma API deverá ser desenvolvida de uma maneira diferente para atender aos requisitos de uma determinada demanda, não sendo possível seguir à risca todas as boas práticas aqui descritas. Mas sempre haverá uma solução para cada tipo de situação e, com uma API bem documentada, não haverá problemas durante a integração entre as aplicações.
+Se uma API conter todas as especificações citadas neste trabalho, ela estará apta para ser utilizada por outras aplicações. O desenvolvimento de APIs em si é um assunto muito amplo, não sendo possível relatar e padronizar todos os casos. Ocorrerá situações onde uma API deverá ser desenvolvida de uma maneira diferente para atender aos requisitos de uma determinada demanda, não sendo possível seguir à risca todas as boas práticas aqui descritas. Mas sempre haverá uma solução para cada tipo de situação e, com uma API bem documentada, não haverá problemas para realizar a integração entre as aplicações.
 
 REFERÊNCIAS
 
