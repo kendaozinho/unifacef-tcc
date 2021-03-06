@@ -44,10 +44,9 @@ FRANCA
 
 
 
-
 RESUMO
 
-Atualmente, a utilização de APIs (Interface de Programação de Aplicações) vem se tornando cada vez mais comum no contexto corporativo, o que não é de se estranhar, já que elas proporcionam uma vasta quantidade de benefícios envolvendo aspectos como praticidade, performance e segurança. Em meio a esta vasta quantidade de benefícios, existe a possibilidade de integrar aplicações, no entanto, para que este feito se realize, é imprescindível que a aplicação requisitante siga uma documentação antes de usufruir dos recursos fornecidos pela API, e é neste momento que se deve enfatizar a importância do uso de padrões de design. O objetivo deste trabalho é, com base em pesquisas, apresentar os possíveis problemas causados pela falta de padrão e sugerir boas práticas de desenvolvimento usando como referência uma API feita pelos próprios autores em virtude dos conhecimentos adquiridos durante o curso, sempre enfatizando de que nada descrito tem a obrigação de ser seguido.
+Atualmente, a utilização de APIs (Interface de Programação de Aplicações) vem se tornando cada vez mais comum no contexto corporativo, o que não é de se estranhar, já que elas proporcionam uma vasta quantidade de benefícios envolvendo aspectos como praticidade, performance e segurança. Em meio a esta numerosa quantidade de benefícios, existe a possibilidade de integrar aplicações, no entanto, para que este feito se realize, é imprescindível que a aplicação requisitante siga uma documentação antes de usufruir dos recursos fornecidos pela API, e é neste momento que se deve enfatizar a importância do uso de padrões de design. O objetivo deste trabalho é, com base em pesquisas, apresentar os possíveis problemas causados pela falta de padrão e sugerir boas práticas de desenvolvimento usando como referência uma API feita pelos próprios autores em virtude dos conhecimentos adquiridos durante o curso, sempre enfatizando de que nada descrito tem a obrigação de ser seguido.
 
 Palavras-chave: Padrões de Design. API REST. Integração de Aplicações.
 
@@ -83,15 +82,13 @@ Submissão: 15/03/2021
 
 
 
-
-
 1 INTRODUÇÃO
 
 A partir do momento que o desenvolvimento de APIs ganhou destaque na área da tecnologia, o número de empresas que resolveram utilizá-las aumentou drasticamente, porém, muitas destas empresas não estabeleceram padrões em suas APIs, não tendo noção dos possíveis problemas que isto acarretaria no futuro. Esse tipo de situação também ocorre com frequência nos dias atuais.
-Estes dados foram obtidos durante a análise das diversas APIs públicas expostas na internet e, tendo em vista este cenário, foi feita uma pesquisa sobre quais deveriam ser os pontos mais relevantes a serem levados em consideração pelas APIs para que elas fossem classificadas de qualidade e de fácil entendimento, proporcionando assim, uma integração sem complicações entre as aplicações.
-No decorrer das buscas realizadas, foram encontrados diversos tipos de padrões de desenvolvimento válidos e, baseando-se neles, concluiu-se que é fundamental que uma API utilize os verbos com o intuito de representar uma ação, contenha URLs que estejam relacionadas às entidades, disponibilize a paginação e a ordenação de registros, retorne os códigos de status corretamente com base em cada tipo de situação, siga um padrão de nomenclatura e forneça uma documentação fácil de ser interpretada.
+Estes dados foram obtidos perante a análise das diversas APIs públicas expostas na internet e, tendo em vista este cenário, foi feita uma pesquisa sobre quais deveriam ser os pontos mais relevantes a serem levados em consideração pelas APIs para que elas fossem classificadas de qualidade e de fácil entendimento, proporcionando assim, uma integração sem complicações entre as aplicações.
+No decorrer das buscas realizadas, foram encontrados diversos tipos de padrões de desenvolvimento válidos e, baseando-se neles, concluiu-se que é fundamental que uma API utilize os verbos com a intenção de representar uma ação, contenha URLs que estejam relacionadas às entidades, disponibilize a opção de paginar e ordenar registros, retorne os códigos de status corretamente com base em cada tipo de situação, siga um padrão de nomenclatura e forneça uma documentação fácil de ser interpretada.
 A API desenvolvida pelos autores engloba todos os aspectos abordados anteriormente, possuindo operações de busca, inclusão, alteração e exclusão de registros. Os exemplos citados neste trabalho estão baseados nesta API e o link da sua documentação encontra-se nas referências.
-Levando em consideração que este trabalho possui um tema de difícil compreensão, os autores visaram explicar e exemplificar cada um dos assuntos abordados na pesquisa de uma maneira fácil de se entender, buscando agregar todos os tipos de leitores.
+Levando em consideração que este trabalho possui um tema de difícil compreensão, os autores visaram explicar e exemplificar cada um dos assuntos abordados na pesquisa com o propósito de facilitar o entendimento de cada um deles, buscando assim, agregar todos os tipos de leitores.
 Se uma API for desenvolvida utilizando este trabalho como um guia, ela estará apta para realizar integrações sem enfrentar nenhum tipo de dificuldade.
 
 2 API REST
