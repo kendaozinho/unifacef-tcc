@@ -1,4 +1,29 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 A IMPORTÂNCIA DE USAR PADRÕES DE DESIGN EM APIS REST
+
+
+
+
+
+
+
+
 
 Caio Cesar Alves Borges
 Graduando em Desenvolvimento de Aplicações Web e Móveis Escaláveis – Uni-FACEF
@@ -7,14 +32,13 @@ caiocesarborges89@gmail.com
 Kenneth Gottschalk de Azevedo
 Graduando em Desenvolvimento de Aplicações Web e Móveis Escaláveis – Uni-FACEF
 kg_azevedo@hotmail.com
-
 Resumo
-Atualmente, a utilização da Interface de Programação de Aplicações (APIs) vem se tornando cada vez mais comum no contexto corporativo, o que não é de se estranhar, já que elas proporcionam uma vasta quantidade de benefícios envolvendo aspectos como praticidade, performance e segurança. Em meio a esta numerosa quantidade de benefícios, existe a possibilidade de integrar aplicações, no entanto, para que este feito se realize, é imprescindível que a aplicação requisitante siga uma documentação antes de usufruir dos recursos fornecidos pela API, e é neste momento que se deve enfatizar a importância do uso de padrões de design. O objetivo deste trabalho é, com base em pesquisas, apresentar os possíveis problemas causados pela falta de padrão e sugerir boas práticas de desenvolvimento usando como referência uma API feita pelos próprios autores em virtude dos conhecimentos adquiridos durante o curso, sempre enfatizando de que nada descrito tem a obrigação de ser seguido.
+Atualmente, a utilização da Interface de Programação de Aplicações (APIs) vem se tornando cada vez mais comum no contexto corporativo, o que não é de se estranhar, já que elas proporcionam muitos benefícios envolvendo aspectos como praticidade, performance e segurança. Dentre os benefícios, existe a possibilidade de integrar aplicações, no entanto, para que isso aconteça, é imprescindível que a aplicação requisitante respeite padrões da documentação antes de usufruir dos recursos fornecidos pela API, e é neste momento que se deve enfatizar a importância do uso de padrões de design. O objetivo deste trabalho é, com base em pesquisas, apresentar os possíveis problemas causados pela falta de padrão e sugerir boas práticas de desenvolvimento usando como referência uma API feita pelos próprios autores em virtude dos conhecimentos adquiridos durante o curso, sempre enfatizando de que nada descrito tem a obrigação de ser seguido.
 
 Palavras-chave: Padrões de Design. API REST. Integração de Aplicações.
 
 Abstract
-Nowadays, the use of Application Programming Interface (APIs) has become increasingly common in the corporate context, which is not surprising, since they provide a vast amount of benefits involving aspects such as practicality, performance and security. In the midst of this numerous amount of benefits, there is the possibility of integrating applications, however, for this to happen, it is essential that the requesting application follows a documentation before taking advantage of the resources provided by the API, and it is at this moment that should emphasize the importance of using design patterns. The objective of this work is, based on research, to present the possible problems caused by the lack of standard and to suggest good development practices using as reference an API made by the authors themselves due to the knowledge acquired during the course, always emphasizing that nothing described has an obligation to be followed.
+Nowadays, the use of Application Programming Interface (APIs) has become increasingly common in the corporate context, which is not surprising, since they provide many benefits involving aspects such as practicality, performance and security. Among the benefits, there is the possibility of integrating applications, however, for this to happen, it is essential that the requesting application respects documentation standards before taking advantage of the resources provided by the API, and it is at this moment that should emphasize the importance of using design patterns. The objective of this work is, based on research, to present the possible problems caused by the lack of standard and to suggest good development practices using as reference an API made by the authors themselves due to the knowledge acquired during the course, always emphasizing that nothing described has an obligation to be followed.
 
 Keywords: Design Patterns. REST API. Application Integration.
 
