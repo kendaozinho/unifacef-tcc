@@ -1,63 +1,41 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 A IMPORTÂNCIA DE USAR PADRÕES DE DESIGN EM APIS REST
 
-
-
-
-
-
-
-
-
 Caio Cesar Alves Borges
-Graduando em Desenvolvimento de Aplicações Web e Móveis Escaláveis – Uni-FACEF
+Pós-graduando em Desenvolvimento de
+Aplicações Web e Móveis Escaláveis – Uni-FACEF
 caiocesarborges89@gmail.com
 
 Kenneth Gottschalk de Azevedo
-Graduando em Desenvolvimento de Aplicações Web e Móveis Escaláveis – Uni-FACEF
+Pós-graduando em Desenvolvimento de
+Aplicações Web e Móveis Escaláveis – Uni-FACEF
 kg_azevedo@hotmail.com
+
 Resumo
-Atualmente, a utilização da Interface de Programação de Aplicações (APIs) vem se tornando cada vez mais comum no contexto corporativo, o que não é de se estranhar, já que elas proporcionam muitos benefícios envolvendo aspectos como praticidade, performance e segurança. Dentre os benefícios, existe a possibilidade de integrar aplicações, no entanto, para que isso aconteça, é imprescindível que a aplicação requisitante respeite padrões da documentação antes de usufruir dos recursos fornecidos pela API, e é neste momento que se deve enfatizar a importância do uso de padrões de design. O objetivo deste trabalho é, com base em pesquisas, apresentar os possíveis problemas causados pela falta de padrão e sugerir boas práticas de desenvolvimento usando como referência uma API feita pelos próprios autores em virtude dos conhecimentos adquiridos durante o curso, sempre enfatizando de que nada descrito tem a obrigação de ser seguido.
+Atualmente, a utilização da Interface de Programação de Aplicações (API) vem se tornando cada vez mais comum no contexto corporativo, o que não é de se estranhar, já que o seu uso proporciona diversos benefícios envolvendo aspectos como praticidade, performance e segurança. Dentre os benefícios, existe a possibilidade de integrar aplicações distintas, no entanto, para que isso aconteça, é imprescindível que a aplicação requisitante respeite os padrões de documentação impostos pela aplicação fornecedora antes de usufruir dos seus recursos, e é neste momento que se deve enfatizar a importância do uso de padrões de design em APIs. O objetivo deste trabalho é, com base em pesquisas, apresentar os possíveis problemas causados pela falta de padrão e sugerir boas práticas de desenvolvimento usando como referência uma API feita pelos próprios autores em virtude dos conhecimentos adquiridos durante o curso, sempre enfatizando de que nada descrito tem a obrigação de ser seguido.
 
 Palavras-chave: Padrões de Design. API REST. Integração de Aplicações.
 
-Abstract
-Nowadays, the use of Application Programming Interface (APIs) has become increasingly common in the corporate context, which is not surprising, since they provide many benefits involving aspects such as practicality, performance and security. Among the benefits, there is the possibility of integrating applications, however, for this to happen, it is essential that the requesting application respects documentation standards before taking advantage of the resources provided by the API, and it is at this moment that should emphasize the importance of using design patterns. The objective of this work is, based on research, to present the possible problems caused by the lack of standard and to suggest good development practices using as reference an API made by the authors themselves due to the knowledge acquired during the course, always emphasizing that nothing described has an obligation to be followed.
+Submissão: 06/03/2021. Aprovação: 
 
-Keywords: Design Patterns. REST API. Application Integration.
+
+
 
 1 Introdução
 
-A partir do momento que o desenvolvimento de APIs ganhou destaque na área da tecnologia, o número de empresas que resolveram utilizá-las aumentou drasticamente, porém, muitas destas empresas não estabeleceram padrões em suas APIs, não tendo noção dos possíveis problemas que isto acarretaria no futuro. Esse tipo de situação também ocorre com frequência nos dias atuais.
-Estes dados foram obtidos perante a análise das diversas APIs públicas expostas na internet e, tendo em vista este cenário, foi feita uma pesquisa sobre quais deveriam ser os pontos mais relevantes a serem levados em consideração pelas APIs para que elas fossem classificadas de qualidade e de fácil entendimento, proporcionando assim, uma integração sem complicações entre as aplicações.
-No decorrer das buscas realizadas, foram encontrados diversos tipos de padrões de desenvolvimento válidos e, baseando-se neles, concluiu-se que é fundamental que uma API utilize os verbos com a intenção de representar uma ação, contenha URLs que estejam relacionadas às entidades, disponibilize a opção de paginar e ordenar registros, retorne os códigos de status corretamente com base em cada tipo de situação, siga um padrão de nomenclatura e forneça uma documentação fácil de ser interpretada.
+A partir do momento que o desenvolvimento de APIs ganhou destaque na área da tecnologia, várias empresas começaram a utilizá-las em seu cotidiano, porém, muitas destas empresas não estabeleciam padrões de design em suas APIs, ocasionando diversos problemas durante a integração de aplicações. Esse tipo de situação também ocorre com frequência nos dias atuais.
+Essas informações foram obtidas perante a análise das diversas APIs públicas expostas na internet e, tendo em vista este cenário, foi feita uma pesquisa sobre quais deveriam ser os pontos mais relevantes a serem levados em consideração pelas APIs para que elas ficassem legíveis, proporcionando assim, uma integração de forma simplificada.
+No decorrer das pesquisas, foram encontrados diversos tipos de padrões de desenvolvimento válidos e, baseando-se neles, concluiu-se que é fundamental que uma API utilize os verbos com a intenção de representar uma ação, contenha URLs que estejam relacionadas às entidades, disponibilize a opção de paginar e ordenar registros, retorne os códigos de status corretamente com base em cada tipo de situação, siga um padrão de nomenclatura e forneça uma documentação fácil de ser interpretada.
 A API desenvolvida pelos autores engloba todos os aspectos abordados anteriormente, possuindo operações de busca, inclusão, alteração e exclusão de registros. Os exemplos citados neste trabalho estão baseados nesta API e o link da sua documentação encontra-se nas referências.
-Levando em consideração que este trabalho possui um tema de difícil compreensão, os autores visaram explicar e exemplificar cada um dos assuntos abordados na pesquisa com o propósito de facilitar o entendimento de cada um deles, buscando assim, agregar todos os tipos de leitores.
-Se uma API for desenvolvida utilizando este trabalho como um guia, ela estará apta para realizar integrações sem enfrentar nenhum tipo de dificuldade.
+Levando em consideração a complexidade do tema abordado, os autores visaram explicar e exemplificar cada um dos assuntos abordados na pesquisa com o propósito de facilitar o entendimento de cada um deles, buscando assim, agregar todos os tipos de leitores.
 
 2 API REST
 
 Não se pode falar sobre padrões de design em APIs REST sem antes entender o significado de API e como ela é caracterizada como REST.
 
+
 2.1 Definição
 
-A sigla API é a abreviatura de Application Programming Interface e se trata de uma interface que possibilita a comunicação entre duas ou mais aplicações distintas. Quando uma API precisa enviar dados através da rede, ela é caracterizada como um Web Service. Desse modo, todo Web Service é considerado uma API, porém, nem toda API é considerada um Web Service.
+A sigla API é a abreviatura de Application Programming Interface e se trata de uma interface que possibilita a comunicação entre duas ou mais aplicações distintas. Se uma API requer que os dados sejam enviados através da rede, ela é caracterizada como um Web Service. Desse modo, todo Web Service é considerado uma API, porém, nem toda API é considerada um Web Service.
 
 Os Web Services surgiram como consequência natural da utilização da Internet. Alguns consideram essa utilização massificada, como um processo que produz a evolução desse meio de comunicação entre pessoas, e também como grande rede de computadores, o que naturalmente levou à possibilidade de se escrever aplicações e disponibilizá-las ao público em grande escala. (ABINADER; LINS. 2006, p. 10)
 
@@ -66,7 +44,7 @@ As APIs têm como principal função expor recursos na Web, sendo que cada recur
 
 2.2 Verbos
 
-	Um dos dados de requisição obrigatórios durante a chamada de API é o verbo (ou método). Ele representa a ação que será realizada e é essencial que seja utilizado da maneira correta. Os principais verbos são:
+	Um dos dados obrigatórios de requisição durante a chamada de API é o verbo (ou método). Ele representa a ação que será realizada e é essencial que seja utilizado da maneira correta. Os principais verbos são:
 
     • GET — obtenção dos dados de um ou mais registros;
     • POST — inclusão de um novo registro;
@@ -78,19 +56,19 @@ Há casos em que o verbo POST é utilizado para realizar operações lógicas ao
 
 2.3 URL
 
-	A URL (Uniform Resource Locator) também é um dado de requisição obrigatório e, quando junta ao verbo, servem para identificar unicamente um recurso na Web. A sintaxe de uma URL é protocolo://domínio:porta/caminho, sendo:
+	A URL (Uniform Resource Locator) também é um dado de requisição obrigatório e, quando junta ao verbo, são utilizados para identificar unicamente um recurso na Web. A sintaxe de uma URL é protocolo://domínio:porta/caminho, sendo:
 
     • Protocolo — HTTP ou HTTPS;
     • Domínio — nome do servidor Web ou endereço IP;
     • Porta — número da porta utilizada pela aplicação;
     • Caminho — nome e localização de determinado recurso.
 
-As URLs também podem possuir variáveis de caminho e/ou parâmetros de requisição, que consistem em filtrar uma busca ou identificar um registro.
-A figura a seguir mostra como realizar a junção do verbo com a URL (ressaltando que, nas rotas de inclusão e alteração, os dados de requisição do registro ficam no corpo da mensagem):
+As URLs também podem possuir variáveis de caminho e/ou parâmetros de requisição, que podem representar um filtro de busca ou identificar um registro.
+A Figura 1 mostra exemplos de junção do verbo com a URL (ressaltando que, nas rotas de inclusão e alteração, os dados de requisição do registro ficam no corpo da mensagem):
 
-  Figura 1 — Exemplo de rotas para buscar, incluir, alterar ou excluir registros.
+Figura 1 — Exemplo de rotas para buscar, incluir, alterar ou excluir registros
 
-  Fonte: Documentação da API do Trabalho de Conclusão de Curso – Os autores.
+Fonte: Autores
 
 Existem desenvolvimentos que causam uma quebra no contrato, não sendo possível reaproveitar as rotas já existentes. Esse tipo de problema ocorre em situações como: alteração do verbo, alteração no caminho da URL, adição de dados de requisição obrigatórios, alteração de nome ou tipagem de um dado, remoção de dados de resposta e alteração no código de status.
 Para resolver esse tipo de problema é necessário adicionar uma nova versão nas rotas que foram desenvolvidas (manter a v1 e adicionar a v2, por exemplo) e adequar os clients para utilizá-las.
@@ -99,21 +77,21 @@ Para resolver esse tipo de problema é necessário adicionar uma nova versão na
 
 	Os cabeçalhos são dados opcionais introduzidos nas requisições e nas respostas de uma chamada de API. Geralmente são distintos e não possuem relação com a entidade que a URL se associa.
 
-  Figura 2 — Exemplo de adição de um token JWT no cabeçalho das requisições.
+Figura 2 — Exemplo de adição de um token JWT no cabeçalho das requisições
 
-  Fonte: Documentação da API do Trabalho de Conclusão de Curso – Os autores.
+Fonte: Autores
 
-Uma ótima maneira de se realizar autenticações é introduzindo chaves de API no cabeçalho da requisição, independentemente do tipo da autenticação. No caso da API desenvolvida pelos autores, foi-se utilizada a autenticação JWT e a chave se encontra exposta na documentação para facilitar os testes feitos pelos usuários (lembrando que não é uma boa prática expor dados sensíveis em uma documentação, sendo este, um caso de exceção).
+Uma ótima maneira de se realizar autenticações é introduzindo chaves de API no cabeçalho da requisição, independentemente do tipo da autenticação. No caso da API desenvolvida pelos autores, utilizou-se a autenticação JWT e a chave se encontra exposta na documentação para facilitar os testes feitos pelos usuários (lembrando que não é uma boa prática expor dados sensíveis em uma documentação, sendo este, um caso de exceção).
 
 2.5 Corpo
 
 	O corpo é um conteúdo opcional introduzido nas requisições e nas respostas de uma chamada de API. Este conteúdo geralmente possui um formato de texto informado no cabeçalho, sendo que os mais utilizados são XML e JSON.
+Na Figura 3, o corpo da mensagem de resposta é separado em meta (contendo dados de paginação, nome do servidor e versão da aplicação) e records (contendo o conteúdo dos registros). Esse tipo de padrão facilita a integração por parte das aplicações requisitantes, pois pode-se considerar que todas as respostas terão o mesmo formato e que sempre haverá registros nas chamadas com sucesso.
 
-  Figura 3 — Exemplo de conteúdo no corpo da mensagem.
+Figura 3 — Exemplo de conteúdo no corpo da mensagem
 
-  Fonte: Documentação da API do Trabalho de Conclusão de Curso – Os autores.
+Fonte: Os Autores
 
-No exemplo anterior, o corpo da mensagem de resposta é separado em meta (contendo dados de paginação, nome do servidor e versão da aplicação) e records (contendo o conteúdo dos registros). Esse tipo de padrão facilita a integração por parte das aplicações requisitantes, pois pode-se considerar que todas as respostas terão o mesmo formato e que sempre haverá registros nas chamadas com sucesso.
 É aconselhável que o corpo das mensagens possua uma relação com a entidade que a rota se associa (em exceção dos casos de exclusão, pois não há conteúdo de resposta).
 
 2.6 Código de status
@@ -126,15 +104,19 @@ No exemplo anterior, o corpo da mensagem de resposta é separado em meta (conten
     • Família 400 (de 400 à 499) — erro por parte do client;
     • Família 500 (de 500 à 599) — erro por parte do server.
 
-  Figura 4 — Exemplo dos possíveis códigos de status na exclusão de um registro.
+Figura 4 — Exemplo dos possíveis códigos de status na exclusão de um registro
 
-  Fonte: Documentação da API do Trabalho de Conclusão de Curso – Os autores.
+Fonte: Autores
 
-	A figura a seguir mostra a enorme variedade de códigos de status criados até o momento:
+	A Figura 5 mostra a enorme variedade de códigos de status criados até o momento:
 
-  Figura 5 — Lista de todos os códigos de status até o momento.
 
-  Fonte: Http Status Codes Cheat Sheet – Konstantin Stepanov.
+
+
+
+Figura 5 — Lista de todos os códigos de status até o momento
+
+Fonte: Http Status Codes Cheat Sheet – Konstantin Stepanov
 
 Implementar todos os códigos de status à risca é uma tarefa complexa e que exige muita paciência. Para isso, foi feito um levantamento dos códigos de status mais utilizados pelas APIs junto com a especificação de cada um deles.
 
@@ -170,48 +152,43 @@ Lista dos códigos de status de erro por parte do server mais utilizados:
 As rotas que retornam mais de um registro precisam ser paginadas pois, desta forma, será trafegado somente o necessário e a API se tornará mais performática, oferecendo uma melhor experiência às aplicações requisitantes.
 Uma das formas existentes de paginar registros é informar, via parâmetros de requisição, o número da página atual e a quantidade de registros por página. É desejável que o total de registros também seja retornado pela API para que a aplicação requisitante saiba a quantidade de páginas existentes.
 
-  Figura 6 — Exemplo de uma busca de registros com paginação.
+Figura 6 — Exemplo de uma busca de registros com paginação
 
-  Fonte: Documentação da API do Trabalho de Conclusão de Curso – Os autores.
+Fonte: Autores
 
 Em relação à ordenação, é aconselhável que a funcionalidade fique dentro da API para evitar que haja desenvolvimento nas aplicações requisitantes.
 Uma forma válida de ordenar registros é informando o nome do campo que será usado pra realizar a ordenação junto ao tipo de ordenação (crescente ou decrescente), por exemplo: v1/developers?offset=0&limit=3&sort=+name.
-
 3 Padrões de nomenclatura
 
 É essencial que uma API possua um padrão de nomenclatura nas rotas e nos dados de requisição/resposta, pois as aplicações requisitantes consideram isto como uma premissa para realizar integrações. Há diversos tipos de padrões de nomenclatura, porém, é imprescindível que apenas um deles seja utilizado.
-A tabela a seguir mostra alguns exemplos de padrões utilizados em rotas:
-
-TIPO
-EXEMPLO
-Singular
-/v1/product/
-Plural
-/v1/products/
-Camel Case
-/v1/marketplaceProducts/
-Snake Case
-/v1/marketplace_products/
-Spinal Case
-/v1/marketplace-products/
-
+Alguns exemplos de padrões utilizados em rotas são: Singular, Plural, Camel Case, Snake Case e Spinal Case.
 No caso dos dados de requisição e de resposta, é aconselhável a utilização do plural em dados do tipo lista e o singular para o restante dos dados. O Camel Case, Snake Case e Spinal Case também são exemplos de padrões que podem ser aplicados a estes dados.
-Vale salientar de que também é importante utilizar apenas uma língua durante o desenvolvimento de uma API (não misturar português e inglês, por exemplo).
+Vale salientar que também é importante utilizar apenas uma língua durante o desenvolvimento de uma API (não misturar português e inglês, por exemplo).
 
 4 Documentação
 
 Após a finalização do desenvolvimento de uma API, é necessário a exposição de suas funcionalidades às aplicações requisitantes e, para isso, uma documentação deve ser feita. Uma ótima ferramenta para este propósito é o Swagger.
-“A principal vantagem do Swagger é que o mesmo possui uma dependência para as principais linguagens de programação do mercado, e funciona basicamente lendo as anotações do código, o que facilita muito que a cada alteração no código, sua documentação permaneça atualizada” (SILVA, 2018).
+A principal vantagem do Swagger é que o mesmo possui uma dependência para as principais linguagens de programação do mercado, e funciona basicamente lendo as anotações do código, o que facilita muito que a cada alteração no código, sua documentação permaneça atualizada. (SILVA, 2018)
 
-  Figura 7 — Exemplo de documentação via Swagger (versão 3.0.0).
 
-  Fonte: Documentação da API do Trabalho de Conclusão de Curso – Os autores.
+
+
+
+
+
+
+
+
+Figura 7 — Exemplo de documentação via Swagger (versão 3.0.0)
+
+Fonte: Autores
 
 Uma outra grande vantagem de se utilizar o Swagger é a possibilidade de chamar as APIs através dos clients gerados por ele, facilitando a obtenção dos recursos e a realização dos testes.
 
-5 Conclusão
+5 Considerações Finais
 
-Se uma API conter todas as especificações citadas neste trabalho, ela estará apta para ser utilizada por outras aplicações. O desenvolvimento de APIs em si é um assunto muito amplo, não sendo possível relatar e padronizar todos os casos. Ocorrerá situações onde uma API deverá ser desenvolvida de uma maneira diferente para atender aos requisitos de uma determinada demanda, não sendo possível seguir à risca todas as boas práticas aqui descritas. Mas sempre haverá uma solução para cada tipo de situação e, com uma API bem documentada, não haverá problemas de integração com outras aplicações.
+Se uma API possuir todas as especificações citadas neste trabalho, ela estará preparada para ser utilizada por outras aplicações. O desenvolvimento de APIs em si é um assunto muito amplo, onde é necessário um estudo mais aprofundado em design de APIs para criar um padrão mais conciso. É possível construir uma API coesa seguindo os princípios básicos de documentação, utilizando corretamente os status codes, verbos http, paginação e ordenação dos registros, e estandardizar a nomenclatura de contratos. Todos esses pontos citados anteriormente garantem uma API bem estruturada e de fácil entendimento. 
+Em certas situações, uma API deverá ser desenvolvida de uma maneira diferente para atender aos requisitos de uma determinada demanda, onde os desenvolvedores acabam por violar os padrões básicos que foram apresentados nesse artigo, gerando um grande retrabalho para refazer a API e deixa-la bem documentada. Esse artigo foi feito para apresentar as melhores práticas e padrões, para que uma API seja construída com documentação e padrão de design, facilitando assim a simples integração com outras aplicações.
 
 Referências
 
