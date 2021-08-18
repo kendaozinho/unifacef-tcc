@@ -113,7 +113,6 @@ Fonte: BORGES; AZEVEDO, 2021.
 É aconselhável que o corpo das mensagens possua uma relação com a entidade que a rota se associa (em exceção dos casos de exclusão, pois não há conteúdo de resposta durante a remoção de registros).
 
 
-
 2.6 Código de status
 
 	O código de status trata-se de um número que identifica se a resposta de uma chamada de API foi processada ou não. Eles são classificados em famílias:
