@@ -69,13 +69,13 @@ O método POST também pode ser utilizado para realizar outros tipos de processo
     • Porta — número da porta utilizada pela aplicação;
     • Caminho — nome e localização de determinado recurso.
 
-As URLs também podem possuir atributos de caminho e/ou parâmetros de requisição, que podem representar um filtro de busca ou identificar um registro.
-A Figura 1 mostra exemplos de junção do método com a URL (ressaltando que, nas rotas de inclusão e alteração, os dados de requisição do registro ficam no corpo da mensagem):
+As URLs também podem possuir propriedades de caminho e/ou parâmetros de requisição, podendo representar um filtro de busca ou identificar um registro.
+A Figura 1 mostra alguns exemplos da junção de URL com o método, onde cada rota em específico representa uma operação diferente. Vale ressaltar que, nas rotas de inclusão e alteração, os dados de requisição do registro se encontram no corpo da mensagem (este item será explicado com mais clareza posteriormente).
 
 Figura 1 — Rotas de busca, inclusão, alteração e exclusão de desenvolvedores
 
 Fonte: BORGES; AZEVEDO, 2021.
-Existem desenvolvimentos que causam uma quebra de contrato, não sendo possível reaproveitar as rotas já existentes. Esse tipo de problema ocorre em situações como:
+Existem desenvolvimentos que causam uma quebra de contrato, ou seja, adaptações em rotas que fazem as aplicações requisitantes pararem de funcionar. Esse tipo de problema ocorre em situações como:
 
     • Alteração do método;
     • Alteração na rota da URL;
@@ -84,19 +84,12 @@ Existem desenvolvimentos que causam uma quebra de contrato, não sendo possível
     • Remoção de dados de resposta;
     • Alteração no código de status.
 
-Para resolver esse tipo de problema é aconselhável adicionar uma nova versão nas rotas que foram desenvolvidas e adequar os clients para utilizá-las. Um exemplo seria manter a rota v1 e adicionar a rota v2.
+Para resolver esse tipo de problema é aconselhável a utilização do versionamento de rotas, mantendo a versão das rotas já existentes e adicionando uma nova versão para as rotas que serão desenvolvidas. Dessa maneira, as aplicações requisitantes que utilizavam a versão atual não sofrerão impacto e as aplicações requisitantes que irão consumir a nova versão terão que se adequar às modificações realizadas nela. Um exemplo de versionamento de rotas é adicionar um prefixo na rota para representar a versão dela (como mostrado na Figura 1).
 
 2.4 Cabeçalhos
 
-	Os cabeçalhos são dados opcionais introduzidos nas requisições e nas respostas de uma chamada de API. Geralmente os cabeçalhos são distintos e não possuem vínculo com a entidade que a URL se associa.
-	A Figura 2 mostra um exemplo de adição de token JWT no cabeçalho das requisições da API que foi desenvolvida pelos autores.
-
-
-
-
-
-
-
+	Os cabeçalhos são dados opcionais introduzidos nas requisições e nas respostas de uma chamada de API. Geralmente trata-se de dados distintos e que não possuem vínculo com a entidade que a rota se associa.
+	Um exemplo de cabeçalho é a utilização de chaves de API para fins de autenticidade (como mostrado na Figura 2). Esse tipo de autenticação serve como segurança, garantindo que uma API será utilizada apenas por aplicações requisitantes que são confiáveis. Existem diversos tipos de autenticações em APIs, sendo que as mais comuns são o Oauth e o JWT.
 
 
 
@@ -106,21 +99,24 @@ Figura 2 — Adição de um token JWT no cabeçalho das requisições
 
 Fonte: BORGES; AZEVEDO, 2021.
 
-Uma maneira de se realizar autenticações é introduzindo chaves de API no cabeçalho da requisição. No caso da API desenvolvida pelos autores, utilizou-se a autenticação JWT, onde a chave de autenticação se encontra exposta na documentação da API, facilitando os testes feitos pelos usuários (lembrando que não é uma boa prática expor dados inapropriados em uma documentação, sendo este, um caso de exceção).
+No caso da API desenvolvida pelos autores, utilizou-se a autenticação JWT, e a chave de autenticação está exposta na documentação da API para facilitar os testes feitos pelos usuários (lembrando que, por se tratar de um dado que garante a segurança da API, não é uma boa prática deixá-lo exposto em uma documentação, sendo este, um caso de exceção).
 
 2.5 Corpo
 
-	O corpo é um conteúdo opcional introduzido nas requisições e nas respostas de uma chamada de API. Este conteúdo geralmente possui um formato de texto informado no cabeçalho das requisições, sendo que os mais utilizados são XML e JSON.
-A Figura 3 mostra um exemplo de preenchimento no corpo de uma requisição e de uma resposta durante uma chamada de API. Neste exemplo, o corpo da mensagem de resposta é separado em meta (contendo dados de paginação, nome do servidor e versão da aplicação) e records (contendo o conteúdo dos registros). Essa padronização facilita a integração por parte das aplicações requisitantes, pois é considerado que todas as respostas irão seguir o mesmo formato e que sempre haverá registros nas chamadas com sucesso.
+	O corpo é um conteúdo opcional introduzido nas requisições e nas respostas de uma chamada de API. Este conteúdo geralmente possui o tipo do conteúdo introduzido no cabeçalho das requisições, sendo que os mais utilizados são XML e JSON.
+Na Figura 3 há um exemplo de corpo de requisição e de resposta durante uma chamada de API. Neste exemplo, o corpo de resposta é separado em meta (contendo dados de paginação, nome do servidor e versão da aplicação) e records (contendo o conteúdo dos registros). Esse tipo de padronização facilita a integração por parte das aplicações requisitantes, pois considera-se que todas as respostas seguirão o mesmo formato e que sempre haverá registros nas chamadas com sucesso.
 
-Figura 3 — Corpo da requisição e da resposta ao incluir um novo desenvolvedor
+Figura 3 — Dados de requisição e de resposta na inclusão de um desenvolvedor
 
 Fonte: BORGES; AZEVEDO, 2021.
 
-É aconselhável que o corpo das mensagens possua uma relação com a entidade que a rota se associa (em exceção dos casos de exclusão, pois não há conteúdo de resposta, pois não faz sentido retornar o conteúdo de uma entidade que foi removida).
+É aconselhável que o corpo das mensagens possua uma relação com a entidade que a rota se associa (em exceção dos casos de exclusão, pois não há conteúdo de resposta durante a remoção de registros).
+
+
+
 2.6 Código de status
 
-	O código de status se trata de um número que identifica se a resposta de uma chamada de API foi processada com sucesso ou não. Eles são classificados em famílias:
+	O código de status trata-se de um número que identifica se a resposta de uma chamada de API foi processada ou não. Eles são classificados em famílias:
 
     • Família 100 (de 100 à 199) — informação;
     • Família 200 (de 200 à 299) — sucesso;
@@ -133,14 +129,13 @@ Fonte: BORGES; AZEVEDO, 2021.
 Figura 4 — Exclusão de habilidade
 
 Fonte: BORGES; AZEVEDO, 2021.
-
-	A Figura 5 mostra as variedades de códigos de status criados até o momento:
+	Existem diversos códigos de status criados até o momento (como mostrado na Figura 5), sendo que cada um deles é utilizado para representar determinada situação.
 
 Figura 5 — Lista de todos os códigos de status existentes até o momento
 
 Fonte: STEPANOV, 2012.
 
-Implementar todos os códigos de status à risca é uma tarefa complexa e que exige tempo. Para isso, foi feito um levantamento dos códigos de status mais utilizados pelas APIs junto com a especificação de cada um deles.
+Implementar os códigos de status à risca é uma tarefa complexa e demorada. Para isso, foi feito um levantamento dos códigos de status mais utilizados pelas APIs junto com a especificação de cada um deles.
 
 Lista dos códigos de status de sucesso mais utilizados:
 
@@ -164,27 +159,26 @@ Lista dos códigos de status de erro por parte do client mais utilizados:
     • 422 (UNPROCESSABLE ENTITY) — utilizado quando o client informa dados de requisição válidos, porém, não processáveis;
     • 429 (TOO MANY REQUESTS) — utilizado quando o servidor atinge o limite máximo de processamento de dados.
 
-Lista dos códigos de status de erro por parte do server mais utilizados:
+	Lista dos códigos de status de erro por parte do server mais utilizados:
 
     • 500 (INTERNAL SERVER ERROR) — utilizado quando ocorre algum tipo de erro inesperado durante o processamento dos dados;
     • 502 (BAD GATEWAY) — utilizado quando uma dependência externa apresenta algum tipo de comportamento inesperado.
 
 2.7 Paginação e ordenação
 
-As rotas que retornam mais de um registro precisam ser paginadas pois, desta forma, será trafegado apenas os dados utilizados e a API se tornará mais performática, facilitando a integração por parte das aplicações requisitantes.
-Uma das formas existentes de paginar registros é informar, via parâmetros de requisição, o número da página atual e a quantidade de registros por página. É desejável que o total de registros também seja retornado pela API para que a aplicação requisitante saiba a quantidade de páginas existentes.
-	A Figura 6 mostra um exemplo de uma busca de registros com paginação.
+As rotas que retornam mais de um registro precisam ser paginadas, pois, desta forma, será trafegado apenas os dados utilizados e a API se tornará mais performática, facilitando a integração por parte das aplicações requisitantes.
+Uma das formas existentes de paginar registros é informar, via parâmetros de requisição, o número da página atual e a quantidade de registros por página (como mostrado na Figura 6). É desejável que o total de registros também seja retornado pela API para que a aplicação requisitante saiba a quantidade de páginas existentes.
 
 Figura 6 — Buscar habilidades com paginação
 
 Fonte: BORGES; AZEVEDO, 2021.
 
-Em relação à ordenação, é aconselhável que a funcionalidade fique dentro da API para evitar que tenha desenvolvimento nas aplicações requisitantes.
+Em relação à ordenação, é aconselhável que a funcionalidade fique dentro da API para evitar que as aplicações requisitantes desenvolvam ela.
 Uma forma válida de ordenar registros é informando o nome do campo que será usado pra realizar a ordenação junto ao tipo de ordenação (crescente ou decrescente), por exemplo: v1/developers?offset=0&limit=3&sort=+name.
 
 3 Padrões de nomenclatura
 
-É importante que uma API possua um padrão de nomenclatura nas rotas e nos dados de requisição/resposta, pois as aplicações requisitantes partirão dessa premissa para que seja feita a integração. Há diversos tipos de padrões de nomenclatura, porém, é aconselhável que apenas um deles seja utilizado.
+É importante que uma API possua um padrão de nomenclatura nas rotas e nos dados de requisição/resposta, pois as aplicações requisitantes partirão dessa premissa durante o processo de integração. Há diversos tipos de padrões de nomenclatura, porém, é aconselhável que apenas um deles seja utilizado.
 Alguns exemplos de padrões utilizados em rotas são:
 
     • Singular;
@@ -193,30 +187,29 @@ Alguns exemplos de padrões utilizados em rotas são:
     • Snake Case;
     • Spinal Case.
 
-No caso dos dados de requisição e de resposta, é aconselhável a utilização do plural em dados do tipo lista e o singular para o restante dos dados. O Camel Case, Snake Case e Spinal Case também são exemplos de padrões que podem ser aplicados a estes dados.
+No caso dos dados de requisição e de resposta, é aconselhável a utilização do plural em dados do tipo lista e o singular para o restante dos dados. Camel Case, Snake Case e Spinal Case também são exemplos de padrões que podem ser aplicados a estes dados.
 Vale salientar que também é importante utilizar apenas um idioma durante o desenvolvimento de uma API (não misturar português e inglês, por exemplo).
 
 4 Documentação
 
-Após a finalização do desenvolvimento de uma API, é relevante expor as suas funcionalidades às aplicações requisitantes e, para isso, deve ser criada uma documentação para ela. Um exemplo de ferramenta para este propósito é o Swagger.
+Após a finalização do desenvolvimento de uma API, é relevante expor as funcionalidades dela às aplicações requisitantes e, para isso, é necessário criar uma documentação para ela. Um exemplo de ferramenta para este propósito é o Swagger.
 
 A principal vantagem do Swagger é que o mesmo possui uma dependência para as principais linguagens de programação do mercado, e funciona basicamente lendo as anotações do código, o que facilita muito que a cada alteração no código, sua documentação permaneça atualizada (SILVA, 2018).
 
-	A Figura 7 mostra um exemplo de documentação de API feita na ferramenta Swagger.
+	A Figura 7 mostra um exemplo de documentação de API feita pela ferramenta Swagger.
 
 Figura 7 — Documentação da API desenvolvida pelos autores
 
 Fonte: BORGES; AZEVEDO, 2021.
 
-Uma outra vantagem de se utilizar a ferramenta Swagger é a possibilidade de chamar as APIs através dos próprios clients gerados por ele, facilitando a obtenção dos recursos e a realização dos testes.
+Uma outra vantagem de se utilizar a ferramenta Swagger é a possibilidade de chamar as APIs através dos próprios clients gerados por ela, facilitando a obtenção dos recursos e a realização dos testes.
 
 
 
 
 5 Considerações Finais
 
-Se uma API possuir as especificações citadas neste trabalho, ela estará preparada para ser utilizada por outras aplicações. O desenvolvimento de APIs em si é um assunto amplo, sendo necessário um estudo mais aprofundado em design de APIs para criar um padrão mais conciso. É possível construir uma API coesa seguindo os princípios básicos de documentação, utilizando corretamente os códigos de status, métodos, paginação e ordenação dos registros, e estandardizar a nomenclatura de contratos. Todos esses pontos citados anteriormente garantem uma API bem estruturada e de fácil entendimento.
-Em certas situações, uma API deverá ser desenvolvida de uma maneira diferente para atender aos requisitos de uma determinada demanda, onde os desenvolvedores acabam por violar os padrões básicos que foram apresentados nesse artigo, gerando um retrabalho para refazer a API e deixá-la bem documentada. Esse artigo foi feito para apresentar as melhores práticas e padrões, para que uma API seja construída com documentação e padrão de design, facilitando assim a simples integração com outras aplicações.
+O desenvolvimento de APIs em si é um assunto muito amplo, sendo necessário um estudo mais aprofundado sobre design de APIs para a criação de um padrão mais preciso e que contemple situações mais específicas. Porém, se uma API possuir as especificações citadas neste trabalho, ela estará pronta para ser integrada com outras aplicações, pois, com base nas pesquisas realizadas, trata-se de um padrão bastante concreto e muito utilizado pela comunidade de desenvolvedores. É importante criar uma documentação para a API, explicando e exemplificando o padrão utilizado, para que as aplicações requisitantes não tenham dificuldades ao realizar a integração com ela. É normal que existam situações em que uma API deverá ser desenvolvida de uma forma diferente para atender aos requisitos de uma determinada demanda, sendo necessário violar alguns itens apresentados neste artigo (e isso não é um problema, desde que a API esteja bem documentada). Os autores obtiveram resultados satisfatórios ao aplicar os padrões de design citados neste trabalho dentro da API desenvolvida por eles e expor ela publicamente na internet para que houvesse integração com outras aplicações.
 
 Referências
 
