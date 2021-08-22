@@ -11,7 +11,7 @@ Aplicações Web e Móveis Escaláveis – Uni-FACEF
 kg_azevedo@hotmail.com
 
 Resumo
-Atualmente, a utilização da Interface de Programação de Aplicações (API) vem se tornando cada vez mais comum no contexto corporativo, o que não é de se estranhar, já que o seu uso proporciona diversos benefícios envolvendo aspectos como praticidade, performance e segurança. Dentre os benefícios, existe a possibilidade de integrar aplicações distintas, no entanto, para que isso aconteça, é imprescindível que a aplicação requisitante respeite os padrões de documentação exigidos pela aplicação fornecedora antes de usufruir dos seus recursos, e é neste momento que se deve enfatizar a importância do uso de padrões de design em APIs. O objetivo deste trabalho é, com base em pesquisas, apresentar os possíveis problemas causados pela falta de padrão e sugerir boas práticas de desenvolvimento usando como referência uma API feita pelos próprios autores em virtude dos conhecimentos adquiridos durante o curso, sempre enfatizando de que nada descrito tem a obrigação de ser seguido.
+Atualmente, a utilização da Interface de Programação de Aplicações (API) vem se tornando cada vez mais comum no contexto corporativo, o que não é de se estranhar, já que o seu uso proporciona diversos benefícios envolvendo aspectos como praticidade, desempenho e segurança. Dentre os benefícios, existe a possibilidade de integrar aplicações distintas, no entanto, para que isso aconteça, é imprescindível que a aplicação requisitante respeite os padrões de documentação exigidos pela aplicação fornecedora antes de usufruir dos seus recursos, e é neste momento que se deve enfatizar a importância do uso de padrões de design em APIs. O objetivo deste trabalho é, com base em pesquisas, apresentar os possíveis problemas causados pela falta de padrão e sugerir boas práticas de desenvolvimento usando como referência uma API feita pelos próprios autores em virtude dos conhecimentos adquiridos durante o curso, sempre enfatizando de que nada descrito tem a obrigação de ser seguido.
 
 Palavras-chave: Padrões de Design. API REST. Integração de Aplicações.
 
@@ -22,7 +22,7 @@ Submissão: 06/03/2021. Aprovação:
 
 1 Introdução
 
-A partir do momento que o desenvolvimento de APIs ganhou destaque na área da tecnologia, várias empresas começaram a utilizá-las em seu cotidiano, porém, muitas destas empresas não estabeleceram padrões de design em suas APIs, não prevendo os possíveis problemas que isto acarretaria no futuro.
+A partir do momento que o desenvolvimento de APIs ganhou destaque na área da tecnologia, várias empresas começaram a utilizá-las em seu cotidiano, porém, muitas destas empresas não estabeleceram padrões de design em suas APIs, não pressupondo os possíveis problemas que isto poderia causar no futuro.
 Estas informações foram obtidas perante a análise das diversas APIs públicas que se encontram expostas na internet hoje em dia e, tendo em vista este cenário, foram feitas várias pesquisas sobre quais deveriam ser os pontos mais relevantes a serem levados em consideração pelas APIs para que elas se tornassem propícias a realizar integrações com outras aplicações de forma clara e objetiva.
 No decorrer das pesquisas, foram encontrados diversos tipos de padrões de desenvolvimento de APIs considerados válidos e, baseando-se neles, recomenda-se que uma API:
 
@@ -34,14 +34,14 @@ No decorrer das pesquisas, foram encontrados diversos tipos de padrões de desen
     • Forneça uma documentação que seja fácil de ser interpretada.
 
 A API desenvolvida pelos autores engloba todos os aspectos abordados anteriormente, possuindo operações de busca, inclusão, alteração e exclusão de registros. Os exemplos citados neste trabalho estão baseados nesta API e o link da sua documentação encontra-se nas referências.
-Levando em consideração a complexidade do tema abordado neste trabalho, os autores visaram explicar e exemplificar cada um dos assuntos, buscando assim, facilitar o entendimento do tema e contemplar, inclusive, os leitores mais leigos.
+Considerando a complexidade do tema apresentado neste trabalho, os autores visaram explicar e exemplificar cada um dos assuntos abordados, buscando facilitar o entendimento deles e contemplar, inclusive, os leitores mais leigos.
 
 2 API REST
 
 Não se pode falar sobre padrões de design em APIs REST sem antes entender o significado de API e como ela é caracterizada como REST.
 2.1 Definição
 
-A sigla API é a abreviatura de Application Programming Interface e se trata de uma interface que possibilita a comunicação entre duas ou mais aplicações distintas. Se uma API requer que os seus dados sejam enviados através da rede, ela é caracterizada como um Web Service. Desse modo, todo Web Service é considerado uma API, porém, nem toda API é considerada um Web Service.
+A sigla API é a abreviatura de Application Programming Interface e se trata de uma interface que possibilita a comunicação entre duas ou mais aplicações distintas. Se uma API requer que os seus dados sejam trafegados através da rede, ela é caracterizada como um Web Service. Desse modo, todo Web Service é considerado uma API, porém, nem toda API é considerada um Web Service.
 
 Os Web Services surgiram como consequência natural da utilização da Internet. Alguns consideram essa utilização massificada, como um processo que produz a evolução desse meio de comunicação entre pessoas, e também como grande rede de computadores, o que naturalmente levou à possibilidade de se escrever aplicações e disponibilizá-las ao público em grande escala (ABINADER; LINS. 2006, p. 10).
 
@@ -62,7 +62,7 @@ O método POST também pode ser utilizado para realizar outros tipos de processo
 
 2.3 URL
 
-	A URL (Uniform Resource Locator) também é um dado obrigatório de requisição e, quando se encontra junta ao método, identifica-se unicamente um recurso na Web. A sintaxe de uma URL é protocolo://domínio:porta/caminho, sendo:
+	A URL (Uniform Resource Locator) também é um dado obrigatório de requisição e, quando está junta ao método, identifica-se unicamente um recurso na Web. A sintaxe de uma URL é protocolo://domínio:porta/caminho, sendo:
 
     • Protocolo — HTTP ou HTTPS;
     • Domínio — nome do servidor Web ou endereço IP;
@@ -70,7 +70,7 @@ O método POST também pode ser utilizado para realizar outros tipos de processo
     • Caminho — nome e localização de determinado recurso.
 
 As URLs também podem possuir propriedades de caminho e/ou parâmetros de requisição, podendo representar um filtro de busca ou identificar um registro.
-A Figura 1 mostra alguns exemplos da junção de URL com o método, onde cada rota em específico representa uma operação diferente. Vale ressaltar que, nas rotas de inclusão e alteração, os dados de requisição do registro se encontram no corpo da mensagem (este item será explicado com mais clareza posteriormente).
+A Figura 1 mostra alguns exemplos da junção de URL com o método, onde cada rota representa uma operação diferente. Vale ressaltar que, nas rotas de inclusão e alteração, os dados de requisição do registro se encontram no corpo da mensagem (este item será explicado melhor posteriormente).
 
 Figura 1 — Rotas de busca, inclusão, alteração e exclusão de desenvolvedores
 
@@ -84,7 +84,7 @@ Existem desenvolvimentos que causam uma quebra de contrato, ou seja, adaptaçõe
     • Remoção de dados de resposta;
     • Alteração no código de status.
 
-Para resolver esse tipo de problema é aconselhável a utilização do versionamento de rotas, mantendo a versão das rotas já existentes e adicionando uma nova versão para as rotas que serão desenvolvidas. Dessa maneira, as aplicações requisitantes que utilizavam a versão atual não sofrerão impacto e as aplicações requisitantes que irão consumir a nova versão terão que se adequar às modificações realizadas nela. Um exemplo de versionamento de rotas é adicionar um prefixo na rota para representar a versão dela (como mostrado na Figura 1).
+Para resolver esse tipo de problema é aconselhável a utilização do versionamento de rotas (ou seja, manter a versão das rotas já existentes e adicionar uma nova versão para as rotas que serão desenvolvidas). Dessa maneira, as aplicações requisitantes que utilizam a versão atual não sofrerão impacto e as aplicações requisitantes que irão consumir a nova versão terão que se adequar às modificações realizadas nela. Um exemplo de versionamento de rotas é adicionando um prefixo nelas para representar a versão (como mostrado na Figura 1).
 
 2.4 Cabeçalhos
 
@@ -99,12 +99,12 @@ Figura 2 — Adição de um token JWT no cabeçalho das requisições
 
 Fonte: BORGES; AZEVEDO, 2021.
 
-No caso da API desenvolvida pelos autores, utilizou-se a autenticação JWT, e a chave de autenticação está exposta na documentação da API para facilitar os testes feitos pelos usuários (lembrando que, por se tratar de um dado que garante a segurança da API, não é uma boa prática deixá-lo exposto em uma documentação, sendo este, um caso de exceção).
+No caso da API desenvolvida pelos autores, foi utilizada a autenticação JWT e o token se encontra exposto na documentação da API para facilitar os testes feitos pelos usuários (lembrando que, por se tratar de um dado que garante a segurança da API, não é uma boa prática deixá-lo exposto em uma documentação, sendo este, um caso de exceção).
 
 2.5 Corpo
 
 	O corpo é um conteúdo opcional introduzido nas requisições e nas respostas de uma chamada de API. Este conteúdo geralmente possui o tipo do conteúdo introduzido no cabeçalho das requisições, sendo que os mais utilizados são XML e JSON.
-Na Figura 3 há um exemplo de corpo de requisição e de resposta durante uma chamada de API. Neste exemplo, o corpo de resposta é separado em meta (contendo dados de paginação, nome do servidor e versão da aplicação) e records (contendo o conteúdo dos registros). Esse tipo de padronização facilita a integração por parte das aplicações requisitantes, pois considera-se que todas as respostas seguirão o mesmo formato e que sempre haverá registros nas chamadas com sucesso.
+Na Figura 3 há um exemplo de corpo de requisição e de resposta durante uma chamada de API. Neste exemplo, o corpo de resposta é separado em meta (contendo dados de paginação, nome do servidor e versão da aplicação) e records (contendo o conteúdo dos registros). Esse tipo de padronização facilita a integração por parte das aplicações requisitantes, pois considera-se que todas as respostas irão possuir o mesmo formato e que sempre haverá registros nas chamadas realizadas com sucesso.
 
 Figura 3 — Dados de requisição e de resposta na inclusão de um desenvolvedor
 
@@ -128,13 +128,13 @@ Fonte: BORGES; AZEVEDO, 2021.
 Figura 4 — Exclusão de habilidade
 
 Fonte: BORGES; AZEVEDO, 2021.
-	Existem diversos códigos de status criados até o momento (como mostrado na Figura 5), sendo que cada um deles é utilizado para representar determinada situação.
+	Existem diversos códigos de status criados até o momento (como mostrado na Figura 5), sendo que cada um deles é utilizado para representar uma situação específica.
 
 Figura 5 — Lista de todos os códigos de status existentes até o momento
 
 Fonte: STEPANOV, 2012.
 
-Implementar os códigos de status à risca é uma tarefa complexa e demorada. Para isso, foi feito um levantamento dos códigos de status mais utilizados pelas APIs junto com a especificação de cada um deles.
+Implementar os códigos de status à risca é uma tarefa complexa e demorada. Para isso, foi feito um levantamento dos códigos de status mais utilizados pelas APIs junto à especificação de cada um deles.
 
 Lista dos códigos de status de sucesso mais utilizados:
 
