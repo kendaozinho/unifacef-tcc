@@ -99,18 +99,19 @@ Figura 2 — Adição de um token JWT no cabeçalho das requisições
 
 Fonte: BORGES; AZEVEDO, 2021.
 
-No caso da API desenvolvida pelos autores, foi utilizada a autenticação JWT e o seu token se encontra exposto na sua documentação para facilitar os testes feitos pelos usuários (lembrando que, por se tratar de um dado de segurança, não é uma boa prática deixá-lo exposto em uma documentação, sendo este, um caso de exceção).
+No caso da API desenvolvida pelos autores, foi utilizada a autenticação JWT e o seu token pode ser encontrado na documentação (lembrando que, por se tratar de um dado de segurança, não é uma boa prática deixá-lo exposto em uma documentação, sendo este, um caso de exceção para facilitar os testes feitos pelos usuários).
 
 2.5 Corpo
 
-	O corpo é um conteúdo opcional introduzido nas requisições e nas respostas de uma chamada de API. Este conteúdo geralmente possui o tipo do conteúdo incluído no cabeçalho das requisições, sendo que os mais utilizados são XML e JSON.
-Na Figura 3 há um exemplo de corpo de requisição e de resposta durante uma chamada de API. Neste exemplo, o corpo de resposta é separado em meta (possuindo dados de paginação, nome do servidor e versão da aplicação) e records (possuindo o conteúdo dos registros). Esse tipo de padronização facilita a integração por parte das aplicações requisitantes, pois considera-se que todas as respostas irão possuir o mesmo formato e que sempre haverá registros nas chamadas realizadas com sucesso.
+	O corpo é um conteúdo opcional introduzido nas requisições e nas respostas de uma chamada de API, sendo necessário informar o tipo do conteúdo no cabeçalho das requisições. Os tipos mais utilizados são XML e JSON.
+Na Figura 3 há um exemplo de corpo de requisição e de resposta durante uma chamada de API. Neste exemplo, o corpo de resposta é separado em meta (dados de paginação, nome do servidor e versão da aplicação) e records (conteúdo dos registros). Esse tipo de padronização facilita a integração por parte das aplicações requisitantes, pois considera-se que todas as respostas vão possuir o mesmo formato e que sempre haverá registros nas chamadas realizadas com sucesso.
 
 Figura 3 — Dados de requisição e de resposta na inclusão de um desenvolvedor
 
 Fonte: BORGES; AZEVEDO, 2021.
 
 É aconselhável que o corpo das mensagens possua uma relação com a entidade que a rota se associa (em exceção dos casos de exclusão, pois não há conteúdo de resposta durante a remoção de registros).
+
 
 
 2.6 Código de status
@@ -180,11 +181,11 @@ Uma forma válida de ordenar registros é informando o nome do campo que será u
 É importante que uma API possua um padrão de nomenclatura nas rotas e nos dados de requisição/resposta, pois as aplicações requisitantes partirão desta premissa quando iniciarem o processo de integração. Há diversos tipos de padrões de nomenclatura, porém, é aconselhável que apenas um deles seja utilizado.
 Alguns exemplos de padrões utilizados em rotas são:
 
-    • Singular — por exemplo: /v1/product/;
-    • Plural — por exemplo: /v1/products/;
-    • Camel Case — por exemplo: /v1/marketplaceProducts/;
-    • Snake Case — por exemplo: /v1/marketplace_products/;
-    • Spinal Case — por exemplo: /v1/marketplace-products/.
+    • Singular — por exemplo: /v1/product;
+    • Plural — por exemplo: /v1/products;
+    • Camel Case — por exemplo: /v1/marketplaceProducts;
+    • Snake Case — por exemplo: /v1/marketplace_products;
+    • Spinal Case — por exemplo: /v1/marketplace-products.
 
 No caso dos dados de requisição e de resposta, é aconselhável a utilização do plural em dados do tipo lista e o singular para o restante dos dados. Camel Case, Snake Case e Spinal Case também são exemplos de padrões que podem ser aplicados a estes tipos de dados.
 Vale salientar que também é importante utilizar apenas um idioma durante o desenvolvimento de uma API (não misturar português e inglês, por exemplo).
@@ -208,7 +209,7 @@ Uma outra vantagem de se utilizar a ferramenta Swagger é a possibilidade de cha
 
 5 Considerações Finais
 
-O desenvolvimento de APIs em si é um assunto muito amplo, sendo necessário um estudo mais aprofundado sobre design de APIs para a criação de um padrão mais preciso e que contemple situações mais específicas. Porém, se uma API possuir as especificações citadas neste trabalho, ela estará pronta para ser integrada com outras aplicações, pois, com base nas pesquisas realizadas, trata-se de um padrão bastante concreto e muito utilizado pela comunidade de desenvolvedores. É importante criar uma documentação para a API (explicando e exemplificando o padrão utilizado) para que as aplicações requisitantes não tenham dificuldades ao realizar a integração com ela. É normal que existam situações em que uma API deverá ser desenvolvida de uma forma diferente para atender aos requisitos de uma determinada demanda, sendo necessário violar alguns itens apresentados neste trabalho — e isso não é um problema, desde que a API esteja bem documentada. Concluindo-se, os autores obtiveram resultados satisfatórios ao analisar as aplicações que fizeram integrações com a API desenvolvida por eles após exporem ela publicamente na internet.
+O desenvolvimento de APIs em si é um assunto muito amplo, sendo necessário um estudo mais aprofundado sobre design de APIs para a criação de um padrão mais preciso e que contemple situações mais específicas. Porém, se uma API possuir as especificações citadas neste trabalho, ela estará pronta para ser integrada com outras aplicações, pois, com base nas pesquisas realizadas, trata-se de um padrão bastante concreto e muito utilizado pela comunidade de desenvolvedores. Considera-se importante criar uma documentação para a API (explicando e exemplificando o padrão utilizado) para que as aplicações requisitantes não tenham dificuldades ao realizar a integração com ela. É normal que existam situações em que uma API deverá ser desenvolvida de uma forma diferente para atender aos requisitos de uma determinada demanda, sendo necessário violar alguns itens apresentados neste trabalho — e isso não é um problema, desde que a API esteja bem documentada. Concluindo-se, os autores obtiveram resultados satisfatórios ao analisar as aplicações que fizeram integrações com a API desenvolvida por eles após exporem ela publicamente na internet.
 
 Referências
 
