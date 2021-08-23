@@ -99,7 +99,7 @@ Figura 2 — Adição de um token JWT no cabeçalho das requisições
 
 Fonte: BORGES; AZEVEDO, 2021.
 
-No caso da API desenvolvida pelos autores, foi utilizada a autenticação JWT e o seu token pode ser encontrado na documentação (lembrando que, por se tratar de um dado de segurança, não é uma boa prática deixá-lo exposto em uma documentação, sendo este, um caso de exceção para facilitar os testes feitos pelos usuários).
+No caso da API desenvolvida pelos autores, foi utilizada a autenticação JWT e o seu token pode ser encontrado exposto na documentação (lembrando que, por se tratar de um dado de segurança, não é uma boa prática expor chaves de APIs nas documentações, sendo este, um caso de exceção para facilitar os testes feitos pelos usuários).
 
 2.5 Corpo
 
