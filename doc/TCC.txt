@@ -104,7 +104,7 @@ No caso da API desenvolvida pelos autores, foi utilizada a autenticação JWT e 
 2.5 Corpo
 
 	O corpo é um conteúdo opcional introduzido nas requisições e nas respostas de uma chamada de API, sendo necessário informar o tipo do conteúdo no cabeçalho das requisições. Os tipos mais utilizados são XML e JSON.
-Na Figura 3 há um exemplo de corpo de requisição e de resposta durante uma chamada de API. Neste exemplo, o corpo de resposta é separado em meta (dados de paginação, nome do servidor e versão da aplicação) e records (conteúdo dos registros). Esse tipo de padronização facilita a integração por parte das aplicações requisitantes, pois considera-se que todas as respostas vão possuir o mesmo formato e que sempre haverá registros nas chamadas realizadas com sucesso.
+Na Figura 3 há um exemplo de corpo de requisição e de resposta durante uma chamada de API. Neste exemplo, o corpo de resposta é separado em meta (dados de paginação, nome do servidor e versão da aplicação) e records (conteúdo dos registros). Esse tipo de padronização facilita a integração por parte das aplicações requisitantes, pois considera-se que todas as respostas possuirão o mesmo formato de corpo e que sempre haverá registros nas chamadas realizadas com sucesso.
 
 Figura 3 — Dados de requisição e de resposta na inclusão de um desenvolvedor
 
